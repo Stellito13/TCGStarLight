@@ -23,8 +23,7 @@
 
 		.logo {
 			width: 140px;
-			height: 40px;
-			background: #bbb;
+			height: auto;
 		}
 
 		.menu div {
@@ -38,9 +37,16 @@
 		/* CAROUSEL PUB */
 		/* ========================= */
 
+		.ad-carousel-wrapper {
+			display: flex;
+			justify-content: center;
+			padding: 20px 40px;
+		}
+
 		.ad-carousel {
 			width: 100%;
-			height: 350px;
+			max-width: 1000px;
+			aspect-ratio: 16 / 9;
 			overflow: hidden;
 			position: relative;
 		}
@@ -53,12 +59,15 @@
 
 		.ad-slide {
 			min-width: 100%;
+			height: 100%;
+			padding: 0 10px;
+			box-sizing: border-box;
 		}
 
 		.ad-slide img {
 			width: 100%;
-			height: 350px;
-			object-fit: cover;
+			height: 100%;
+			object-fit: contain;
 		}
 
 		/* ========================= */
@@ -192,7 +201,7 @@
 
 	<header>
 
-		<div class="logo"></div>
+		<img class="logo" src="star.png" alt="StarLight logo" />
 
 		<div class="menu">
 			<div></div>
@@ -207,24 +216,26 @@
 	<!-- CAROUSEL PUBLICITE -->
 	<!-- ========================= -->
 
-	<div class="ad-carousel">
+	<div class="ad-carousel-wrapper">
+		<div class="ad-carousel">
 
-		<div class="ad-track" id="adTrack">
+			<div class="ad-track" id="adTrack">
 
-			<div class="ad-slide">
-				<img class="img_accueil" src="./placehorlder.png" />
-			</div>
+				<div class="ad-slide">
+					<img class="img_accueil" src="PR-Vol-5.png" />
+				</div>
 
-			<div class="ad-slide">
-				<img class="img_accueil" src="PR-Vol-5.png" />
-			</div>
+				<div class="ad-slide">
+					<img class="img_accueil" src="PR-Vol-5.png" />
+				</div>
 
-			<div class="ad-slide">
-				<img class="img_accueil" src="PR-Vol-5.png" />
+				<div class="ad-slide">
+					<img class="img_accueil" src="PR-Vol-5.png" />
+				</div>
+
 			</div>
 
 		</div>
-
 	</div>
 
 
@@ -238,15 +249,15 @@
 	<div class="carousel" id="carousel">
 
 		<div class="card left">
-        <img class="img_accueil" src="cartep-Récupéré4.png"/>
+			<img class="img_accueil" src="cardsplaceholder-Récupéré.png" />
 		</div>
 
 		<div class="card center">
-			<img class="img_accueil" src="cartep-Récupéré4.png"/>
+			<img class="img_accueil" src="cardsplaceholder-Récupéré.png" />
 		</div>
 
 		<div class="card right">
-			<img class="img_accueil" src="cartep-Récupéré4.png"/>
+			<img class="img_accueil" src="cardsplaceholder-Récupéré.png" />
 		</div>
 
 	</div>
@@ -256,7 +267,7 @@
 
 	<div class="display">
 		<div>blablabla</div>
-		<div><img class="img_accueil" src="https://placehold.co/500x600"/></div>
+		<div><img class="img_accueil" src="https://placehold.co/500x600" /></div>
 	</div>
 
 
