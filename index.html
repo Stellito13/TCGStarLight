@@ -82,8 +82,7 @@
 		/* ========================= */
 		/* CARD CAROUSEL */
 		/* ========================= */
-
-		/* CONTAINER */
+/* CONTAINER */
 
 		.carousel {
 			position: relative;
@@ -97,7 +96,6 @@
 
 		.card {
 			position: absolute;
-			justify-content: center;
 			top: 0;
 			left: 50%;
 			width: 200px;
@@ -106,10 +104,44 @@
 			cursor: pointer;
 		}
 
-		.card img {
+		/* INNER FLIP */
+
+		.card-inner {
+			position: relative;
+			width: 100%;
+			transform-style: preserve-3d;
+			transition: transform 0.6s ease;
+		}
+
+		.card-front,
+		.card-back {
+			width: 100%;
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+		}
+
+		.card-front {
+			display: block;
+		}
+
+		.card-back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: rotateY(180deg);
+		}
+
+		.card-front img,
+		.card-back img {
 			width: 100%;
 			border-radius: 12px;
 			box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+		}
+
+		/* CARTE RETOURNÉE */
+
+		.card.flipped .card-inner {
+			transform: rotateY(180deg);
 		}
 
 		/* POSITION GAUCHE */
@@ -246,18 +278,27 @@
 	<!-- ========================= -->
 
 
-	<div class="carousel" id="carousel">
+<div class="carousel" id="carousel">
 
 		<div class="card left">
-			<img class="img_accueil" src="cardsplaceholder-Récupéré.png" />
+			<div class="card-inner">
+				<div class="card-front"><img src="cardsplaceholder-Récupéré.png"/></div>
+				<div class="card-back"><img src="arriere.png"/></div>
+			</div>
 		</div>
 
 		<div class="card center">
-			<img class="img_accueil" src="cardsplaceholder-Récupéré.png" />
+			<div class="card-inner">
+				<div class="card-front"><img src="cardsplaceholder-Récupéré.png"/></div>
+				<div class="card-back"><img src="arriere.png"/></div>
+			</div>
 		</div>
 
 		<div class="card right">
-			<img class="img_accueil" src="cardsplaceholder-Récupéré.png" />
+			<div class="card-inner">
+				<div class="card-front"><img src="cardsplaceholder-Récupéré.png"/></div>
+				<div class="card-back"><img src="arriere.png"/></div>
+			</div>
 		</div>
 
 	</div>
@@ -332,23 +373,37 @@
 		/* CAROUSEL CARTES */
 		/* ========================= */
 
-		const carousel = document.getElementById("carousel")
+const carousel = document.getElementById("carousel")
 		let order = ["left", "center", "right"]
 
 		carousel.addEventListener("click", rotate)
 
 		function rotate() {
 
-			order.push(order.shift())
-
 			const cards = document.querySelectorAll(".card")
+
+			// La carte qui était au centre va partir : on la retourne (arrière visible)
+			// La carte qui arrive au centre : on la remet face avant
+			const currentCenterIndex = order.indexOf("center")
+
+			// Retourner la carte qui quitte le centre
+			cards[currentCenterIndex].classList.add("flipped")
+
+			order.push(order.shift())
 
 			cards.forEach((card, i) => {
 				card.classList.remove("left", "center", "right")
 				card.classList.add(order[i])
 			})
 
+			// La nouvelle carte au centre : enlever le flip après un court délai
+			const newCenterIndex = order.indexOf("center")
+			setTimeout(() => {
+				cards[newCenterIndex].classList.remove("flipped")
+			}, 400)
+
 		}
+
 
 
 	</script>
