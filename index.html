@@ -6,9 +6,23 @@
 	<title>Cards Pack Edition</title>
 
 	<style>
+		.outfit {
+			font-family: "Outfit", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		.new-rocker-regular {
+			font-family: "New Rocker", system-ui;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+
 		body {
 			margin: 0;
-			font-family: Arial;
+			font-family: "Outfit", sans-serif;
 			background: #f4f4f4;
 		}
 
@@ -22,15 +36,15 @@
 		}
 
 		.logo {
-			width: 160px;
+			width: 140px;
 			height: auto;
 		}
 
 		.menu div {
-			width: 50px;
-			height: 8px;
+			width: 30px;
+			height: 4px;
 			background: black;
-			margin: 8px 0;
+			margin: 5px 0;
 		}
 
 		/* ========================= */
@@ -71,18 +85,36 @@
 		}
 
 		/* ========================= */
-		/* TITRES */
+		/* FONT DARKHUSK */
 		/* ========================= */
+
+		@font-face {
+			font-family: 'Darkhusk';
+			src: url('./Darkhusk.otf') format('opentype');
+		}
+
+		/* ========================= */
+		/* TITRES - première lettre */
+		/* ========================= */
+
+		h2::first-letter {
+			font-family: 'Darkhusk', serif;
+			font-size: 2em;
+			line-height: 0.8;
+			display: inline-block;
+		}
 
 		h2 {
 			margin-left: 5%;
 			margin-top: 40px;
+			font-family: "New Rocker", system-ui;
 		}
 
 		/* ========================= */
 		/* CARD CAROUSEL */
 		/* ========================= */
-/* CONTAINER */
+
+		/* CONTAINER */
 
 		.carousel {
 			position: relative;
@@ -192,18 +224,66 @@
 			right: -10px;
 		}
 
+		/* ========================= */
+		/* SECTION CAROUSEL + TEXTE */
+		/* ========================= */
+
+		.cards-section {
+			display: flex;
+			align-items: center;
+			gap: 40px;
+			padding: 0 5%;
+			margin-top: 20px;
+		}
+
+		.cards-description {
+			flex: 1;
+			max-width: 300px;
+		}
+
+		.cards-description h3 {
+			margin-top: 0;
+		}
+
+		.cards-description p {
+			line-height: 1.7;
+			color: #444;
+		}
+
+		/* ========================= */
 		/* DISPLAY */
+		/* ========================= */
 
 		.display {
 			display: flex;
-			gap: 20px;
+			align-items: center;
+			gap: 40px;
+			padding: 0 5%;
+			margin-top: 20px;
+		}
+
+		.display-text {
+			flex: 1;
+		}
+
+		.display-text h3 {
+			margin-top: 0;
+		}
+
+		.display-text p {
+			line-height: 1.7;
+			color: #444;
+		}
+
+		.display-image {
+			flex: 1;
+			display: flex;
 			justify-content: center;
 		}
 
-		.display div {
-			width: 200px;
-			height: 150px;
-			background: #ccc;
+		.display-image img {
+			max-width: 100%;
+			border-radius: 8px;
 		}
 
 		/* PRODUCTS */
@@ -258,7 +338,7 @@
 				</div>
 
 				<div class="ad-slide">
-					<img class="img_accueil" src="PR-Vol-5.png" />
+					<img class="img_accueil" src="PR-Vol-51.png" />
 				</div>
 
 				<div class="ad-slide">
@@ -278,27 +358,39 @@
 	<!-- ========================= -->
 
 
-<div class="carousel" id="carousel">
+	<div class="cards-section">
 
-		<div class="card left">
-			<div class="card-inner">
-				<div class="card-front"><img src="cardsplaceholder-Récupéré.png"/></div>
-				<div class="card-back"><img src="arriere.png"/></div>
-			</div>
+
+				<div class="cards-description">
 		</div>
 
-		<div class="card center">
-			<div class="card-inner">
-				<div class="card-front"><img src="cardsplaceholder-Récupéré.png"/></div>
-				<div class="card-back"><img src="arriere.png"/></div>
+
+		<div class="carousel" id="carousel">
+
+			<div class="card left">
+				<div class="card-inner">
+					<div class="card-front"><img src="cardsplaceholder-Récupéré.png" /></div>
+					<div class="card-back"><img src="arriere.png" /></div>
+				</div>
 			</div>
+
+			<div class="card center">
+				<div class="card-inner">
+					<div class="card-front"><img src="cardsplaceholder-Récupéré.png" /></div>
+					<div class="card-back"><img src="arriere.png" /></div>
+				</div>
+			</div>
+
+			<div class="card right">
+				<div class="card-inner">
+					<div class="card-front"><img src="cardsplaceholder-Récupéré.png" /></div>
+					<div class="card-back"><img src="arriere.png" /></div>
+				</div>
+			</div>
+
 		</div>
 
-		<div class="card right">
-			<div class="card-inner">
-				<div class="card-front"><img src="cardsplaceholder-Récupéré.png"/></div>
-				<div class="card-back"><img src="arriere.png"/></div>
-			</div>
+		<div class="cards-description">
 		</div>
 
 	</div>
@@ -307,8 +399,20 @@
 	<h2>Display</h2>
 
 	<div class="display">
-		<div>blablabla</div>
-		<div><img class="img_accueil" src="https://placehold.co/500x600" /></div>
+		<div class="display-text">
+			<h3>Display Box</h3>
+			<p>
+				La Display Box StarLight contient <strong>12 boosters</strong>, soit 84 cartes au total.
+				Idéale pour compléter votre collection ou offrir en cadeau, chaque display est soigneusement emballée
+				et garantit au moins une carte rare par booster.
+			</p>
+			<p>
+				Disponible en précommande dès maintenant, livraison prévue à partir du <strong>23 Août 2026</strong>.
+			</p>
+		</div>
+		<div class="display-image">
+			<img src="https://placehold.co/500x600" alt="Display Box" />
+		</div>
 	</div>
 
 
@@ -373,7 +477,7 @@
 		/* CAROUSEL CARTES */
 		/* ========================= */
 
-const carousel = document.getElementById("carousel")
+		const carousel = document.getElementById("carousel")
 		let order = ["left", "center", "right"]
 
 		carousel.addEventListener("click", rotate)
@@ -403,7 +507,6 @@ const carousel = document.getElementById("carousel")
 			}, 400)
 
 		}
-
 
 
 	</script>
