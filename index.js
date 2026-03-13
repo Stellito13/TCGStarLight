@@ -4,14 +4,9 @@
 
 const menuBtn = document.getElementById("menuBtn")
 const menuOverlay = document.getElementById("menuOverlay")
-const menuClose = document.getElementById("menuClose")
 
 menuBtn.addEventListener("click", () => {
     menuOverlay.classList.add("open")
-})
-
-menuClose.addEventListener("click", () => {
-    menuOverlay.classList.remove("open")
 })
 
 document.getElementById("menuOverlayBg").addEventListener("click", () => {
