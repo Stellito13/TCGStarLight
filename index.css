@@ -175,25 +175,10 @@ header {
     object-fit: contain;
 }
 
-/* ========================= */
-/* FONT DARKHUSK */
-/* ========================= */
-
-@font-face {
-    font-family: 'Darkhusk';
-    src: url('./Darkhusk.otf') format('opentype');
-}
 
 /* ========================= */
-/* TITRES - première lettre */
+/* TITRES */
 /* ========================= */
-
-h2::first-letter {
-    font-family: 'Darkhusk', serif;
-    font-size: 2em;
-    line-height: 0.8;
-    display: inline-block;
-}
 
 h2 {
     margin-left: 5%;
