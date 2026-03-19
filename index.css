@@ -577,6 +577,8 @@ h2 {
         margin: 16px;
     }
 }
+
+
 /* ========================= */
 /* PANNEAU PRÉCOMMANDE       */
 /* ========================= */
@@ -609,7 +611,10 @@ h2 {
     transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
     max-height: 92vh;
     overflow-y: auto;
+    overflow-x: hidden;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
 }
  
 .preorder-panel.open {
@@ -716,6 +721,7 @@ h2 {
     gap: 0;
     margin: 0 auto 20px;
     width: fit-content;
+    max-width: 100%;
     border: 2px solid #111;
     border-radius: 4px;
     overflow: hidden;
@@ -877,6 +883,7 @@ h2 {
  
 .preorder-btn-next {
     flex: 1;
+    min-width: 0;
     padding: 13px 20px;
     background: #111;
     color: #fff;
@@ -888,6 +895,9 @@ h2 {
     letter-spacing: 0.04em;
     cursor: pointer;
     transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
  
 .preorder-btn-next:hover {
