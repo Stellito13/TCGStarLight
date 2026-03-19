@@ -1,4 +1,4 @@
-    /* ======================================= */
+/* ======================================= */
     /* PRODUCTS PAGE — MOBILE FIRST            */
     /* ======================================= */
  
@@ -51,13 +51,10 @@
  
     .pc-img {
         width: 100%;
-        aspect-ratio: 4/3;
-        background: #e8e8e8;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2.4rem;
-        color: #ccc;
     }
     .pc-img img { width: 100%; height: 100%; object-fit: cover; }
  
@@ -357,7 +354,7 @@
     }
     .related-grid::-webkit-scrollbar { display: none; }
     .related-card {
-        flex: 0 0 140px;
+        flex: 0 0 130px;
         background: #fff;
         border-radius: 6px;
         overflow: hidden;
@@ -366,18 +363,23 @@
         transition: transform 0.2s;
     }
     @media (min-width: 600px) {
-        .related-card { flex: 0 0 160px; }
+        .related-card { flex: 0 0 150px; }
         .related-card:hover { transform: translateY(-3px); }
     }
     .related-card-img {
         width: 100%;
-        aspect-ratio: 4/3;
-        background: #e8e8e8;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
-        color: #ccc;
+        overflow: hidden;
+    }
+    .related-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 6px;
+        box-sizing: border-box;
     }
     .related-card-body { padding: 8px 10px 12px; }
     .related-card-name {

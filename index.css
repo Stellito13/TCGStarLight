@@ -231,7 +231,7 @@ h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30vw;
+    width: 28vw;
     max-width: 260px;
     min-width: 120px;
     transform-style: preserve-3d;
@@ -268,7 +268,7 @@ h2 {
 .card-front img,
 .card-back img {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 6px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
  
@@ -279,7 +279,7 @@ h2 {
  
 /* POSITION GAUCHE */
 .left {
-    transform: translate(-50%, -50%) translateX(-42vw) scale(0.72) rotateY(35deg);
+    transform: translate(-50%, -50%) translateX(-22vw) scale(0.72) rotateY(35deg);
     opacity: 0.55;
     z-index: 1;
 }
@@ -293,7 +293,7 @@ h2 {
  
 /* POSITION DROITE */
 .right {
-    transform: translate(-50%, -50%) translateX(42vw) scale(0.72) rotateY(-35deg);
+    transform: translate(-50%, -50%) translateX(22vw) scale(0.72) rotateY(-35deg);
     opacity: 0.55;
     z-index: 1;
 }
@@ -326,11 +326,12 @@ h2 {
  
 /* DESKTOP : contraindre la largeur des cartes latérales */
 @media (min-width: 700px) {
-    .left  { transform: translate(-50%, -50%) translateX(-300px) scale(0.75) rotateY(35deg); }
-    .right { transform: translate(-50%, -50%) translateX(300px)  scale(0.75) rotateY(-35deg); }
+    .left  { transform: translate(-50%, -50%) translateX(-160px) scale(0.75) rotateY(35deg); }
+    .right { transform: translate(-50%, -50%) translateX(160px)  scale(0.75) rotateY(-35deg); }
     .card  { width: 220px; }
     .carousel { height: 420px; max-height: 420px; }
 }
+
 /* ========================= */
 /* SECTION CAROUSEL + TEXTE */
 /* ========================= */
