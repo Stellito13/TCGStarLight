@@ -72,3 +72,147 @@ function rotate() {
     }, 400)
 
 }
+
+
+/* ========================= */
+/* PANNEAU PRÉCOMMANDE       */
+/* ========================= */
+
+const preorderPanel   = document.getElementById("preorderPanel")
+const preorderOverlay = document.getElementById("preorderOverlay")
+const preorderClose   = document.getElementById("preorderClose")
+const btnNext         = document.getElementById("btnNext")
+const btnBack         = document.getElementById("btnBack")
+const progressBar     = document.getElementById("progressBar")
+const stepLabel       = document.getElementById("stepLabel")
+const panelTitle      = document.getElementById("panelTitle")
+
+const STEPS = [
+    { label: "Étape 1 sur 4", title: "Choisir la quantité",   next: "Continuer →" },
+    { label: "Étape 2 sur 4", title: "Résumé de commande",    next: "Continuer →" },
+    { label: "Étape 3 sur 4", title: "Adresse de livraison",  next: "Continuer →" },
+    { label: "Étape 4 sur 4", title: "Moyen de paiement",     next: "Confirmer la précommande ✦" },
+]
+
+let currentStep = 1
+let currentProduct = { name: "", tag: "", price: 0 }
+let qty = 1
+
+// OUVRIR depuis un bouton précommande
+document.querySelectorAll(".btn-preorder").forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.preventDefault()
+        currentProduct = {
+            name:  btn.dataset.name  || "Produit",
+            tag:   btn.dataset.tag   || "Produit",
+            price: parseFloat(btn.dataset.price) || 0
+        }
+        qty = 1
+        document.getElementById("qtyValue").textContent = qty
+        document.getElementById("recapTag").textContent  = currentProduct.tag
+        document.getElementById("recapName").textContent = currentProduct.name
+        goToStep(1)
+        openPanel()
+    })
+})
+
+function openPanel() {
+    preorderPanel.classList.add("open")
+    preorderOverlay.classList.add("open")
+    document.body.style.overflow = "hidden"
+}
+
+function closePanel() {
+    preorderPanel.classList.remove("open")
+    preorderOverlay.classList.remove("open")
+    document.body.style.overflow = ""
+}
+
+preorderClose.addEventListener("click", closePanel)
+preorderOverlay.addEventListener("click", closePanel)
+
+// QUANTITÉ
+document.getElementById("qtyMinus").addEventListener("click", () => {
+    if (qty > 1) qty--
+    document.getElementById("qtyValue").textContent = qty
+})
+document.getElementById("qtyPlus").addEventListener("click", () => {
+    if (qty < 99) qty++
+    document.getElementById("qtyValue").textContent = qty
+})
+
+// NAVIGATION
+btnNext.addEventListener("click", () => {
+    if (currentStep < 4) {
+        goToStep(currentStep + 1)
+    } else {
+        // CONFIRMATION
+        btnNext.textContent = "✔ Précommande enregistrée !"
+        btnNext.classList.add("success")
+        btnNext.disabled = true
+        setTimeout(closePanel, 2200)
+        setTimeout(() => {
+            btnNext.textContent = STEPS[3].next
+            btnNext.classList.remove("success")
+            btnNext.disabled = false
+        }, 2500)
+    }
+})
+
+btnBack.addEventListener("click", () => {
+    if (currentStep > 1) goToStep(currentStep - 1)
+})
+
+function goToStep(n) {
+    // Masquer l'ancien step
+    document.getElementById("step" + currentStep).classList.remove("active")
+    currentStep = n
+
+    // Afficher le nouveau
+    document.getElementById("step" + currentStep).classList.add("active")
+
+    // Mettre à jour header
+    const s = STEPS[n - 1]
+    stepLabel.textContent  = s.label
+    panelTitle.textContent = s.title
+    btnNext.textContent    = s.next
+    btnNext.classList.remove("success")
+
+    // Progress bar
+    progressBar.style.width = (n / 4 * 100) + "%"
+
+    // Afficher/masquer bouton retour
+    btnBack.style.display = n === 1 ? "none" : "inline-block"
+
+    // Remplir le résumé si step 2
+    if (n === 2) buildSummary()
+
+    // Scroll haut du panel
+    preorderPanel.scrollTop = 0
+}
+
+function buildSummary() {
+    const lines = document.getElementById("summaryLines")
+    const total = document.getElementById("summaryTotal")
+    const unitPrice = currentProduct.price
+    const totalPrice = (unitPrice * qty).toFixed(2)
+
+    lines.innerHTML = `
+        <div class="summary-line">
+            <span>${currentProduct.name}</span>
+            <span>${unitPrice.toFixed(2)} €</span>
+        </div>
+        <div class="summary-line">
+            <span>Quantité</span>
+            <span>× ${qty}</span>
+        </div>
+        <div class="summary-line">
+            <span>Livraison</span>
+            <span>À confirmer</span>
+        </div>
+    `
+    total.textContent = totalPrice + " €"
+}
+
+// Init : cacher le bouton retour
+btnBack.style.display = "none"

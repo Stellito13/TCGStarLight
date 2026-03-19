@@ -37,7 +37,7 @@ header {
 }
 
 .logo {
-    width: 150px;
+    width: 120px;
     height: auto;
     flex-shrink: 0;
     display: block;
@@ -54,19 +54,19 @@ header {
 }
 
 .menu div {
-    width: 50px;
-    height: 8px;
+    width: 30px;
+    height: 5px;
     background: black;
-    margin: 4px 0;
+    margin: 2px 0;
 }
 
 @media (min-width: 600px) {
     .logo {
-        width: 190px;
+        width: 100px;
     }
 
     header {
-        padding: 0 24px;
+        padding: 0 14px;
         height: 80px;
         min-height: 80px;
     }
@@ -372,23 +372,531 @@ h2 {
     border-radius: 8px;
 }
 
-/* PRODUCTS */
-
+/* ========================= */
+/* PRODUCTS                  */
+/* ========================= */
+ 
 .products {
     width: 90%;
-    margin: auto;
+    margin: 0 auto 60px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 24px;
 }
-
+ 
 .product {
     background: white;
-    padding: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
-
+ 
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.13);
+}
+ 
 .product-img {
-    height: 100px;
-    background: #aaa;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+ 
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+.product-img-placeholder {
+    font-size: 2.8rem;
+    color: #ccc;
+}
+ 
+.product-body {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 6px;
+}
+ 
+.product-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: #111;
+    color: #fff;
+    align-self: flex-start;
+}
+ 
+.product-name {
+    font-family: "New Rocker", system-ui;
+    font-size: 1.05rem;
+    color: #111;
+    margin: 2px 0 0;
+    line-height: 1.3;
+}
+ 
+.product-edition {
+    font-size: 0.78rem;
+    color: #888;
+    font-style: italic;
+}
+ 
+.product-details {
+    margin-top: 4px;
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.6;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 8px;
+}
+ 
+.product-details span {
+    display: block;
+}
+ 
+.product-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+ 
+.product-date {
+    font-size: 0.78rem;
+    color: #888;
+}
+ 
+.btn-preorder {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #111;
+    color: #fff;
+    font-family: "Outfit", sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid #111;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+}
+ 
+.btn-preorder:hover {
+    background: transparent;
+    color: #111;
+}
+ 
+@media (max-width: 600px) {
+ 
+    /* TITRES */
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 28px;
+    }
+ 
+    /* CAROUSEL PUB */
+    .ad-carousel-wrapper {
+        padding: 8px 12px;
+    }
+ 
+    /* DISPLAY */
+    .display {
+        flex-direction: column-reverse;
+        gap: 20px;
+        padding: 0 5%;
+    }
+ 
+    .display-image {
+        width: 100%;
+    }
+ 
+    .display-image img {
+        max-width: 80%;
+        margin: 0 auto;
+        display: block;
+    }
+ 
+    .display-text {
+        width: 100%;
+    }
+ 
+    /* PRODUCTS */
+    .products {
+        grid-template-columns: 1fr;
+        width: 92%;
+        gap: 16px;
+    }
+ 
+    .product-name {
+        font-size: 1rem;
+    }
+ 
+    .product-img {
+        aspect-ratio: 16 / 9;
+    }
+ 
+    .product-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+ 
+    .btn-preorder {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+ 
+    /* MENU OVERLAY */
+    .menu-nav ul li a {
+        font-size: 2rem;
+    }
+ 
+    .menu-nav ul li {
+        margin: 16px;
+    }
+}
+/* ========================= */
+/* PANNEAU PRÉCOMMANDE       */
+/* ========================= */
+ 
+.preorder-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 500;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+ 
+.preorder-overlay.open {
+    display: block;
+}
+ 
+.preorder-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 600;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 0 20px 32px;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
+    transform: translateY(100%);
+    transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+    max-height: 92vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+ 
+.preorder-panel.open {
+    transform: translateY(0);
+}
+ 
+/* HANDLE */
+.preorder-handle {
+    width: 40px;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    margin: 14px auto 0;
+}
+ 
+/* HEADER */
+.preorder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 18px 0 10px;
+}
+ 
+.preorder-step-label {
+    margin: 0 0 3px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #aaa;
+}
+ 
+.preorder-title {
+    margin: 0;
+    font-family: "New Rocker", system-ui;
+    font-size: 1.4rem;
+    color: #111;
+}
+ 
+.preorder-close {
+    background: #f0f0f0;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 4px;
+    transition: background 0.15s;
+}
+ 
+.preorder-close:hover {
+    background: #e0e0e0;
+}
+ 
+/* PROGRESS BAR */
+.preorder-progress {
+    height: 3px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+ 
+.preorder-progress-bar {
+    height: 100%;
+    background: #111;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 25%;
+}
+ 
+/* STEPS */
+.preorder-step {
+    display: none;
+}
+ 
+.preorder-step.active {
+    display: block;
+}
+ 
+/* STEP 1 - QUANTITÉ */
+.preorder-product-recap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 12px 14px;
+    background: #f7f7f7;
+    border-radius: 6px;
+}
+ 
+.preorder-product-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #111;
+}
+ 
+.qty-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 0 auto 20px;
+    width: fit-content;
+    border: 2px solid #111;
+    border-radius: 4px;
+    overflow: hidden;
+}
+ 
+.qty-btn {
+    width: 52px;
+    height: 52px;
+    background: #fff;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: "Outfit", sans-serif;
+}
+ 
+.qty-btn:hover {
+    background: #f0f0f0;
+}
+ 
+.qty-value {
+    width: 60px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111;
+    border-left: 2px solid #111;
+    border-right: 2px solid #111;
+    line-height: 52px;
+}
+ 
+/* STEP 2 - RÉSUMÉ */
+.preorder-summary-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+ 
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #444;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+ 
+.preorder-summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111;
+    padding: 12px 0;
+    border-top: 2px solid #111;
     margin-bottom: 10px;
+}
+ 
+/* STEP 3 - FORM */
+.preorder-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+ 
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+ 
+.form-input {
+    flex: 1;
+    padding: 11px 13px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.18s;
+    box-sizing: border-box;
+    min-width: 0;
+}
+ 
+.form-input.full {
+    width: 100%;
+}
+ 
+.form-input:focus {
+    border-color: #111;
+}
+ 
+/* STEP 4 - PAIEMENT */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+ 
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: border-color 0.18s, background 0.18s;
+}
+ 
+.payment-option:has(input:checked) {
+    border-color: #111;
+    background: #f7f7f7;
+}
+ 
+.payment-option input {
+    display: none;
+}
+ 
+.payment-icon {
+    font-size: 1.3rem;
+}
+ 
+/* NOTE */
+.preorder-note {
+    font-size: 0.78rem;
+    color: #999;
+    line-height: 1.6;
+    margin: 8px 0 0;
+}
+ 
+/* FOOTER NAV */
+.preorder-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+}
+ 
+.preorder-btn-back {
+    padding: 13px 20px;
+    background: transparent;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #888;
+    transition: border-color 0.18s, color 0.18s;
+}
+ 
+.preorder-btn-back:hover {
+    border-color: #111;
+    color: #111;
+}
+ 
+.preorder-btn-next {
+    flex: 1;
+    padding: 13px 20px;
+    background: #111;
+    color: #fff;
+    border: 2px solid #111;
+    border-radius: 4px;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+ 
+.preorder-btn-next:hover {
+    background: transparent;
+    color: #111;
+}
+ 
+.preorder-btn-next.success {
+    background: #2a9d5c;
+    border-color: #2a9d5c;
+    color: #fff;
 }
