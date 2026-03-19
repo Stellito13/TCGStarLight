@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="stylesheet" href="index.css" />
-		<link rel="stylesheet" href="cardlist.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Outfit:wght@100..900&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="index.css" />
+	<link rel="stylesheet" href="cardlist.css" />
 	<script src="index.js" defer></script>
-		<script src="cardlist.js" defer></script>
-    <title>Document</title>
+	<script src="cardlist.js" defer></script>
+	<title>Document</title>
 </head>
+
 <body>
 	<header>
 
@@ -39,42 +47,43 @@
 	</div>
 
 
-	    <!-- HERO -->
-    <div class="cardlist-hero">
-        <h2>CardList</h2>
-        <p>New Collection Edition - FR &nbsp;·&nbsp; 35 cartes</p>
-    </div>
- 
-    <!-- FILTERS -->
-    <div class="filters">
-        <span class="filter-label">Rareté :</span>
-        <button class="filter-btn active" data-filter="all">Toutes</button>
-        <button class="filter-btn rarity-C" data-filter="C">C – Commune</button>
-        <button class="filter-btn rarity-R" data-filter="R">R – Rare</button>
-        <button class="filter-btn rarity-P" data-filter="P">P – Parallèle</button>
-        <button class="filter-btn rarity-G" data-filter="G">G – Gold</button>
-    </div>
- 
-    <!-- SEARCH -->
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Rechercher une carte…" />
-        <span class="card-count" id="cardCount">35 cartes</span>
-    </div>
- 
-    <hr class="section-sep">
- 
-    <!-- GRID -->
-    <div class="cards-grid" id="cardsGrid">
-        <!-- Cards injected by JS -->
-    </div>
- 
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-bg" id="lightboxBg"></div>
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose">✕</button>
-            <img id="lightboxImg" src="" alt="" />
-        </div>
-    </div>
+	<!-- HERO -->
+	<div class="cardlist-hero">
+		<h2>CardList</h2>
+		<p>New Collection Edition - FR &nbsp;·&nbsp; 35 cartes</p>
+	</div>
+
+	<!-- FILTERS -->
+	<div class="filters">
+		<span class="filter-label">Rareté :</span>
+		<button class="filter-btn active" data-filter="all">Toutes</button>
+		<button class="filter-btn rarity-C" data-filter="C">C – Commune</button>
+		<button class="filter-btn rarity-R" data-filter="R">R – Rare</button>
+		<button class="filter-btn rarity-P" data-filter="P">P – Parallèle</button>
+		<button class="filter-btn rarity-G" data-filter="G">G – Gold</button>
+	</div>
+
+	<!-- SEARCH -->
+	<div class="search-bar">
+		<input type="text" id="searchInput" placeholder="Rechercher une carte…" />
+		<span class="card-count" id="cardCount">35 cartes</span>
+	</div>
+
+	<hr class="section-sep">
+
+	<!-- GRID -->
+	<div class="cards-grid" id="cardsGrid">
+		<!-- Cards injected by JS -->
+	</div>
+
+	<!-- LIGHTBOX -->
+	<div class="lightbox" id="lightbox">
+		<div class="lightbox-bg" id="lightboxBg"></div>
+		<div class="lightbox-content">
+			<button class="lightbox-close" id="lightboxClose">✕</button>
+			<img id="lightboxImg" src="" alt="" />
+		</div>
+	</div>
 </body>
+
 </html>
