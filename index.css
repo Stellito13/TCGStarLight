@@ -900,3 +900,95 @@ h2 {
     border-color: #2a9d5c;
     color: #fff;
 }
+ 
+/* ========================= */
+/* PANNEAU PRÉCOMMANDE — MOBILE */
+/* ========================= */
+ 
+@media (max-width: 600px) {
+ 
+    .preorder-panel {
+        padding: 0 16px 24px;
+        max-height: 88vh;
+        border-radius: 16px 16px 0 0;
+    }
+ 
+    .preorder-handle {
+        margin-top: 12px;
+    }
+ 
+    .preorder-header {
+        padding: 14px 0 8px;
+    }
+ 
+    .preorder-title {
+        font-size: 1.2rem;
+    }
+ 
+    .preorder-progress {
+        margin-bottom: 18px;
+    }
+ 
+    /* STEP 1 - QUANTITÉ */
+    .preorder-product-recap {
+        padding: 10px 12px;
+        margin-bottom: 18px;
+    }
+ 
+    .preorder-product-name {
+        font-size: 0.85rem;
+    }
+ 
+    .qty-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 1.6rem;
+    }
+ 
+    .qty-value {
+        width: 64px;
+        font-size: 1.4rem;
+        line-height: 56px;
+    }
+ 
+    /* STEP 3 - FORMULAIRE */
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+ 
+    .form-input {
+        padding: 13px 13px;
+        font-size: 1rem; /* évite le zoom auto iOS */
+    }
+ 
+    /* STEP 4 - PAIEMENT */
+    .payment-option {
+        padding: 16px 14px;
+        font-size: 0.95rem;
+    }
+ 
+    .payment-icon {
+        font-size: 1.5rem;
+    }
+ 
+    /* FOOTER */
+    .preorder-footer {
+        margin-top: 20px;
+        gap: 8px;
+    }
+ 
+    .preorder-btn-back {
+        padding: 15px 16px;
+        font-size: 0.88rem;
+    }
+ 
+    .preorder-btn-next {
+        padding: 15px 16px;
+        font-size: 0.95rem;
+    }
+ 
+    .preorder-note {
+        font-size: 0.75rem;
+    }
+}
