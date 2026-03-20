@@ -13,7 +13,6 @@ if (menuOverlayBg && menuOverlay) {
     menuOverlayBg.addEventListener("click", () => menuOverlay.classList.remove("open"))
 }
 
-
 /* ========================= */
 /* CAROUSEL PUB AUTO         */
 /* ========================= */
@@ -29,7 +28,6 @@ if (adTrack && adSlides.length > 0) {
     }
     setInterval(rotateAds, 4000)
 }
-
 
 /* ========================= */
 /* CAROUSEL CARTES           */
@@ -55,7 +53,6 @@ if (carousel) {
     }
 }
 
-
 /* ========================= */
 /* PANNEAU PRÉCOMMANDE       */
 /* ========================= */
@@ -66,8 +63,8 @@ const preorderClose   = document.getElementById("preorderClose")
 const btnNext         = document.getElementById("btnNext")
 const btnBack         = document.getElementById("btnBack")
 const progressBar     = document.getElementById("progressBar")
-const stepLabel       = document.getElementById("stepLabel")
-const panelTitle      = document.getElementById("panelTitle")
+const stepLabelEl     = document.getElementById("stepLabel")
+const panelTitleEl    = document.getElementById("panelTitle")
 
 if (preorderPanel && btnNext && btnBack) {
 
@@ -94,25 +91,23 @@ if (preorderPanel && btnNext && btnBack) {
             document.getElementById("qtyValue").textContent = qty
             document.getElementById("recapTag").textContent  = currentProduct.tag
             document.getElementById("recapName").textContent = currentProduct.name
+            const recapPrice = document.getElementById("recapPrice")
+            if (recapPrice) recapPrice.textContent = currentProduct.price.toFixed(2).replace(".", ",") + " €"
             goToStep(1)
-            openPanel()
+            preorderPanel.classList.add("open")
+            preorderOverlay.classList.add("open")
+            document.body.style.overflow = "hidden"
         })
     })
 
-    function openPanel() {
-        preorderPanel.classList.add("open")
-        preorderOverlay.classList.add("open")
-        document.body.style.overflow = "hidden"
-    }
-
-    function closePanel() {
+    function closePreorder() {
         preorderPanel.classList.remove("open")
         preorderOverlay.classList.remove("open")
         document.body.style.overflow = ""
     }
 
-    if (preorderClose)   preorderClose.addEventListener("click", closePanel)
-    if (preorderOverlay) preorderOverlay.addEventListener("click", closePanel)
+    if (preorderClose)   preorderClose.addEventListener("click", closePreorder)
+    if (preorderOverlay) preorderOverlay.addEventListener("click", closePreorder)
 
     document.getElementById("qtyMinus").addEventListener("click", () => {
         if (qty > 1) { qty--; document.getElementById("qtyValue").textContent = qty }
@@ -128,7 +123,7 @@ if (preorderPanel && btnNext && btnBack) {
             btnNext.textContent = "✔ Précommande enregistrée !"
             btnNext.classList.add("success")
             btnNext.disabled = true
-            setTimeout(closePanel, 2200)
+            setTimeout(closePreorder, 2200)
             setTimeout(() => {
                 btnNext.textContent = STEPS[3].next
                 btnNext.classList.remove("success")
@@ -146,9 +141,9 @@ if (preorderPanel && btnNext && btnBack) {
         currentStep = n
         document.getElementById("step" + currentStep).classList.add("active")
         const s = STEPS[n - 1]
-        stepLabel.textContent  = s.label
-        panelTitle.textContent = s.title
-        btnNext.textContent    = s.next
+        stepLabelEl.textContent  = s.label
+        panelTitleEl.textContent = s.title
+        btnNext.textContent      = s.next
         btnNext.classList.remove("success")
         progressBar.style.width = (n / 4 * 100) + "%"
         btnBack.style.display   = n === 1 ? "none" : "inline-block"
@@ -159,14 +154,13 @@ if (preorderPanel && btnNext && btnBack) {
     function buildSummary() {
         const lines = document.getElementById("summaryLines")
         const total = document.getElementById("summaryTotal")
-        const unitPrice  = currentProduct.price
-        const totalPrice = (unitPrice * qty).toFixed(2)
+        const t = (currentProduct.price * qty).toFixed(2).replace(".", ",")
         lines.innerHTML = `
-            <div class="summary-line"><span>${currentProduct.name}</span><span>${unitPrice.toFixed(2)} €</span></div>
+            <div class="summary-line"><span>${currentProduct.name}</span><span>${currentProduct.price.toFixed(2).replace(".", ",")} €</span></div>
             <div class="summary-line"><span>Quantité</span><span>× ${qty}</span></div>
             <div class="summary-line"><span>Livraison</span><span>À confirmer</span></div>
         `
-        total.textContent = totalPrice + " €"
+        total.textContent = t + " €"
     }
 
     btnBack.style.display = "none"

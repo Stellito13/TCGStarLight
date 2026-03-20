@@ -7,6 +7,7 @@
 	<title>Cards Pack Edition</title>
 	<link rel="stylesheet" href="index.css" />
 	<script src="index.js" defer></script>
+	<link rel="stylesheet" href="products.css" />
 
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,135 +80,382 @@
 	<!-- ========================= -->
 	<!-- CAROUSEL CARTES -->
 	<!-- ========================= -->
- 
- 
+
+
 	<div class="cards-section">
- 
+
 		<div class="carousel" id="carousel">
- 
+
 			<div class="card left">
 				<div class="card-inner">
 					<div class="card-front"><img src="./cards/Rcarte2.png" /></div>
 					<div class="card-back"><img src="./cards/Arriere.png" /></div>
 				</div>
 			</div>
- 
+
 			<div class="card center">
 				<div class="card-inner">
 					<div class="card-front"><img src="./cards/Ccarte1.png" /></div>
 					<div class="card-back"><img src="./cards/Arriere.png" /></div>
 				</div>
 			</div>
- 
+
 			<div class="card right">
 				<div class="card-inner">
 					<div class="card-front"><img src="./cards/Pcarte3.png" /></div>
 					<div class="card-back"><img src="./cards/Arriere.png" /></div>
 				</div>
 			</div>
- 
+
 		</div>
- 
+
 	</div>
 
 
+	<!-- ======================================= -->
+	<!-- LISTE DES PRODUITS                      -->
+	<!-- ======================================= -->
 
+	<div class="products-list" id="productsList">
+		<div class="products-hero">
 			<h2>Products</h2>
- 
-	<div class="products">
- 
-		<!-- BOOSTER -->
-		<div class="product">
-			<div class="product-img">
-				<span class="product-img-placeholder" ><img src="./img/mockupcards.png" alt="Booster"/></span>
-			</div>
-			<div class="product-body">
-				<span class="product-tag">Booster</span>
-				<p class="product-name">Booster NCE — New Collection Edition</p>
-				<p class="product-edition">Set #1 · StarLight CO.</p>
-				<div class="product-details">
-					<span><strong>Contenu :</strong> 7 cartes par booster</span>
-					<span><strong>Dont :</strong> 1 carte rare garantie</span>
-				</div>
-				<div class="product-footer">
-					<span class="product-date">📅 23 Août 2026</span>
-					<a href="#" class="btn-preorder" data-name="Booster NCE" data-tag="Booster" data-price="5.00">Précommande</a>
-				</div>
-			</div>
+			<p>New Collection Edition — Set #1 · StarLight CO.</p>
 		</div>
- 
-		<!-- DISPLAY BOX -->
-		<div class="product">
-			<div class="product-img">
-				<span class="product-img-placeholder"><img src="./img/mockup.png" alt="Display Box" /></span>
-			</div>
-			<div class="product-body">
-				<span class="product-tag">Display Box</span>
-				<p class="product-name">Display Box NCE — New Collection Edition</p>
-				<p class="product-edition">Set #1 · StarLight CO.</p>
-				<div class="product-details">
-					<span><strong>Contenu :</strong> 12 boosters</span>
-					<span><strong>Soit :</strong> 84 cartes au total</span>
-				</div>
-				<div class="product-footer">
-					<span class="product-date">📅 23 Août 2026</span>
-					<a href="#" class="btn-preorder" data-name="Display Box NCE" data-tag="Display Box" data-price="55.00">Précommande</a>
+
+		<div class="products-grid">
+
+			<div class="product-card" data-id="booster">
+				<div class="pc-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
+				<div class="pc-body">
+					<span class="pc-tag">Booster</span>
+					<p class="pc-name">Booster NCE</p>
+					<p class="pc-price">5,00 €</p>
+					<button class="pc-btn">Voir le produit</button>
 				</div>
 			</div>
+
+			<div class="product-card" data-id="display">
+				<div class="pc-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
+				<div class="pc-body">
+					<span class="pc-tag">Display Box</span>
+					<p class="pc-name">Display Box NCE</p>
+					<p class="pc-price">55,00 €</p>
+					<button class="pc-btn">Voir le produit</button>
+				</div>
+			</div>
+
+			<div class="product-card" data-id="deck">
+				<div class="pc-img">✦</div>
+				<div class="pc-body">
+					<span class="pc-tag">Deck</span>
+					<p class="pc-name">Deck Préconstruit NCE</p>
+					<p class="pc-price">18,00 €</p>
+					<button class="pc-btn">Voir le produit</button>
+				</div>
+			</div>
+
+			<div class="product-card" data-id="bundle">
+				<div class="pc-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
+				<div class="pc-body">
+					<span class="pc-tag">Bundle</span>
+					<p class="pc-name">Coffret Collector NCE</p>
+					<p class="pc-price">22,00 €</p>
+					<button class="pc-btn">Voir le produit</button>
+				</div>
+			</div>
+
 		</div>
- 
-		<!-- DECK PRÉCONSTRUIT -->
-		<div class="product">
-			<div class="product-img">
-				<span class="product-img-placeholder">✦</span>
-			</div>
-			<div class="product-body">
-				<span class="product-tag">Deck</span>
-				<p class="product-name">Deck Préconstruit NCE — Starter Edition</p>
-				<p class="product-edition">Set #1 · StarLight CO.</p>
-				<div class="product-details">
-					<span><strong>Contenu :</strong> 40 cartes jouables</span>
-					<span><strong>Idéal :</strong> pour débuter</span>
-				</div>
-				<div class="product-footer">
-					<span class="product-date">📅 23 Août 2026</span>
-					<a href="#" class="btn-preorder" data-name="Deck Préconstruit NCE" data-tag="Deck" data-price="18.00">Précommande</a>
-				</div>
-			</div>
-		</div>
- 
-		<!-- BUNDLE COLLECTOR -->
-		<div class="product">
-			<div class="product-img">
-				<span class="product-img-placeholder"><img src="./img/mockupcards2.png" alt="Bundle" /></span>
-			</div>
-			<div class="product-body">
-				<span class="product-tag">Bundle</span>
-				<p class="product-name">Coffret Collector NCE — Deluxe Edition</p>
-				<p class="product-edition">Set #1 · StarLight CO.</p>
-				<div class="product-details">
-					<span><strong>Contenu :</strong> 3 boosters + 1 carte exclusive</span>
-					<span><strong>Édition :</strong> limitée</span>
-				</div>
-				<div class="product-footer">
-					<span class="product-date">📅 23 Août 2026</span>
-					<a href="#" class="btn-preorder" data-name="Coffret Collector NCE" data-tag="Bundle" data-price="22.00">Précommande</a>
-				</div>
-			</div>
-		</div>
- 
 	</div>
- 
-	<!-- ========================= -->
-	<!-- PANNEAU PRÉCOMMANDE       -->
-	<!-- ========================= -->
- 
+
+	<!-- ======================================= -->
+	<!-- PAGES PRODUIT DÉTAIL                    -->
+	<!-- ======================================= -->
+
+	<!-- BOOSTER -->
+	<div class="product-detail" id="detail-booster">
+		<button class="detail-back" onclick="showList()">← Tous les produits</button>
+		<div class="detail-hero">
+			<div class="detail-img-wrap">
+				<div class="detail-img-main" id="main-img-booster"><img src="./img/mockupcards.png" alt="Booster NCE" />
+				</div>
+				<div class="detail-thumbs">
+					<div class="detail-thumb active">✦</div>
+					<div class="detail-thumb">✦</div>
+					<div class="detail-thumb">✦</div>
+				</div>
+			</div>
+			<div class="detail-info">
+				<span class="detail-tag">Booster</span>
+				<h1 class="detail-name">Booster NCE<br>New Collection Edition</h1>
+				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
+				<p class="detail-price">5,00 €</p>
+				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
+				<div class="detail-divider"></div>
+				<p class="detail-section-title">Contenu du booster</p>
+				<div class="detail-contents">
+					<div class="detail-content-row"><span></span><span>7 cartes par booster</span></div>
+					<div class="detail-content-row"><span></span><span>1 carte rare garantie</span></div>
+					<div class="detail-content-row"><span></span><span>Chance d'obtenir une carte Gold</span></div>
+					<div class="detail-content-row"><span></span><span>Emballage scellé officiel StarLight</span></div>
+				</div>
+				<div class="detail-divider"></div>
+				<p class="detail-desc">
+					Le booster New Collection Edition est le point d'entrée idéal dans l'univers StarLight.
+					Chaque pack contient 7 cartes soigneusement sélectionnées, avec au minimum une carte rare garantie.
+					Les cartes Gold et Prismatic restent rares et très recherchées des collectionneurs.
+				</p>
+				<div class="detail-cta">
+					<button class="btn-detail-preorder" data-name="Booster NCE" data-tag="Booster"
+						data-price="5.00">Précommander</button>
+					<button class="btn-detail-wishlist">♡</button>
+				</div>
+				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
+					sortie.</p>
+			</div>
+		</div>
+		<div class="detail-related">
+			<h3>Vous aimerez aussi</h3>
+			<div class="related-grid">
+				<div class="related-card" data-id="display">
+					<div class="related-card-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Display Box NCE</p>
+						<p class="related-card-price">55,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="deck">
+					<div class="related-card-img">✦</div>
+					<div class="related-card-body">
+						<p class="related-card-name">Deck Préconstruit NCE</p>
+						<p class="related-card-price">18,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="bundle">
+					<div class="related-card-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Coffret Collector NCE</p>
+						<p class="related-card-price">22,00 €</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- DISPLAY BOX -->
+	<div class="product-detail" id="detail-display">
+		<button class="detail-back" onclick="showList()">← Tous les produits</button>
+		<div class="detail-hero">
+			<div class="detail-img-wrap">
+				<div class="detail-img-main"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
+				<div class="detail-thumbs">
+					<div class="detail-thumb active">✦</div>
+					<div class="detail-thumb">✦</div>
+					<div class="detail-thumb">✦</div>
+				</div>
+			</div>
+			<div class="detail-info">
+				<span class="detail-tag">Display Box</span>
+				<h1 class="detail-name">Display Box NCE<br>New Collection Edition</h1>
+				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
+				<p class="detail-price">55,00 €</p>
+				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
+				<div class="detail-divider"></div>
+				<p class="detail-section-title">Contenu de la display</p>
+				<div class="detail-contents">
+					<div class="detail-content-row"><span></span><span>12 boosters NCE</span></div>
+					<div class="detail-content-row"><span></span><span>84 cartes au total</span></div>
+					<div class="detail-content-row"><span></span><span>Au moins 12 cartes rares</span></div>
+					<div class="detail-content-row"><span></span><span>Boîte collector réutilisable</span></div>
+				</div>
+				<div class="detail-divider"></div>
+				<p class="detail-desc">
+					La Display Box StarLight est la référence pour les joueurs sérieux et les collectionneurs.
+					Elle regroupe 12 boosters scellés pour un maximum de chances d'obtenir des cartes rares,
+					Prismatic et Gold de la New Collection Edition.
+				</p>
+				<div class="detail-cta">
+					<button class="btn-detail-preorder" data-name="Display Box NCE" data-tag="Display Box"
+						data-price="55.00">Précommander</button>
+					<button class="btn-detail-wishlist">♡</button>
+				</div>
+				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
+					sortie.</p>
+			</div>
+		</div>
+		<div class="detail-related">
+			<h3>Vous aimerez aussi</h3>
+			<div class="related-grid">
+				<div class="related-card" data-id="booster">
+					<div class="related-card-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Booster NCE</p>
+						<p class="related-card-price">5,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="bundle">
+					<div class="related-card-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Coffret Collector NCE</p>
+						<p class="related-card-price">22,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="deck">
+					<div class="related-card-img">✦</div>
+					<div class="related-card-body">
+						<p class="related-card-name">Deck Préconstruit NCE</p>
+						<p class="related-card-price">18,00 €</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- DECK -->
+	<div class="product-detail" id="detail-deck">
+		<button class="detail-back" onclick="showList()">← Tous les produits</button>
+		<div class="detail-hero">
+			<div class="detail-img-wrap">
+				<div class="detail-img-main">✦</div>
+				<div class="detail-thumbs">
+					<div class="detail-thumb active">✦</div>
+					<div class="detail-thumb">✦</div>
+					<div class="detail-thumb">✦</div>
+				</div>
+			</div>
+			<div class="detail-info">
+				<span class="detail-tag">Deck</span>
+				<h1 class="detail-name">Deck Préconstruit NCE<br>Starter Edition</h1>
+				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
+				<p class="detail-price">18,00 €</p>
+				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
+				<div class="detail-divider"></div>
+				<p class="detail-section-title">Contenu du deck</p>
+				<div class="detail-contents">
+					<div class="detail-content-row"><span></span><span>40 cartes jouables</span></div>
+					<div class="detail-content-row"><span></span><span>Livret de règles officiel</span></div>
+					<div class="detail-content-row"><span></span><span>Prêt à jouer dès l'ouverture</span></div>
+					<div class="detail-content-row"><span></span><span>Idéal pour débuter</span></div>
+				</div>
+				<div class="detail-divider"></div>
+				<p class="detail-desc">
+					Le Deck Préconstruit Starter Edition est conçu pour les nouveaux joueurs qui souhaitent
+					découvrir le jeu StarLight sans se soucier de la construction de deck.
+					Entièrement équilibré et prêt à jouer, il inclut un livret de règles complet.
+				</p>
+				<div class="detail-cta">
+					<button class="btn-detail-preorder" data-name="Deck Préconstruit NCE" data-tag="Deck"
+						data-price="18.00">Précommander</button>
+					<button class="btn-detail-wishlist">♡</button>
+				</div>
+				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
+					sortie.</p>
+			</div>
+		</div>
+		<div class="detail-related">
+			<h3>Vous aimerez aussi</h3>
+			<div class="related-grid">
+				<div class="related-card" data-id="booster">
+					<div class="related-card-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Booster NCE</p>
+						<p class="related-card-price">5,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="display">
+					<div class="related-card-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Display Box NCE</p>
+						<p class="related-card-price">55,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="bundle">
+					<div class="related-card-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Coffret Collector NCE</p>
+						<p class="related-card-price">22,00 €</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- BUNDLE -->
+	<div class="product-detail" id="detail-bundle">
+		<button class="detail-back" onclick="showList()">← Tous les produits</button>
+		<div class="detail-hero">
+			<div class="detail-img-wrap">
+				<div class="detail-img-main"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
+				<div class="detail-thumbs">
+					<div class="detail-thumb active">✦</div>
+					<div class="detail-thumb">✦</div>
+					<div class="detail-thumb">✦</div>
+				</div>
+			</div>
+			<div class="detail-info">
+				<span class="detail-tag">Bundle</span>
+				<h1 class="detail-name">Coffret Collector NCE<br>Deluxe Edition</h1>
+				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
+				<p class="detail-price">22,00 €</p>
+				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
+				<div class="detail-divider"></div>
+				<p class="detail-section-title">Contenu du coffret</p>
+				<div class="detail-contents">
+					<div class="detail-content-row"><span></span><span>3 boosters NCE</span></div>
+					<div class="detail-content-row"><span></span><span>1 carte exclusive collector</span></div>
+					<div class="detail-content-row"><span></span><span>Boîte collector numérotée</span></div>
+					<div class="detail-content-row"><span></span><span>Édition limitée</span></div>
+				</div>
+				<div class="detail-divider"></div>
+				<p class="detail-desc">
+					Le Coffret Collector Deluxe Edition est une édition limitée incluant 3 boosters et une
+					carte exclusive introuvable ailleurs. Chaque coffret est numéroté et livré dans un
+					emballage premium. Idéal comme cadeau ou pour les collectionneurs passionnés.
+				</p>
+				<div class="detail-cta">
+					<button class="btn-detail-preorder" data-name="Coffret Collector NCE" data-tag="Bundle"
+						data-price="22.00">Précommander</button>
+					<button class="btn-detail-wishlist">♡</button>
+				</div>
+				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
+					sortie.</p>
+			</div>
+		</div>
+		<div class="detail-related">
+			<h3>Vous aimerez aussi</h3>
+			<div class="related-grid">
+				<div class="related-card" data-id="booster">
+					<div class="related-card-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Booster NCE</p>
+						<p class="related-card-price">5,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="display">
+					<div class="related-card-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
+					<div class="related-card-body">
+						<p class="related-card-name">Display Box NCE</p>
+						<p class="related-card-price">55,00 €</p>
+					</div>
+				</div>
+				<div class="related-card" data-id="deck">
+					<div class="related-card-img">✦</div>
+					<div class="related-card-body">
+						<p class="related-card-name">Deck Préconstruit NCE</p>
+						<p class="related-card-price">18,00 €</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ======================================= -->
+	<!-- PANNEAU PRÉCOMMANDE                     -->
+	<!-- ======================================= -->
+
 	<div class="preorder-overlay" id="preorderOverlay"></div>
- 
+
 	<div class="preorder-panel" id="preorderPanel">
- 
 		<div class="preorder-handle"></div>
- 
 		<div class="preorder-header">
 			<div>
 				<p class="preorder-step-label" id="stepLabel">Étape 1 sur 4</p>
@@ -215,26 +463,26 @@
 			</div>
 			<button class="preorder-close" id="preorderClose">✕</button>
 		</div>
- 
 		<div class="preorder-progress">
 			<div class="preorder-progress-bar" id="progressBar"></div>
 		</div>
- 
-		<!-- STEP 1 : QUANTITÉ -->
+
+		<!-- STEP 1 -->
 		<div class="preorder-step active" id="step1">
-			<div class="preorder-product-recap" id="productRecap">
+			<div class="preorder-product-recap">
 				<span class="product-tag" id="recapTag">Booster</span>
 				<span class="preorder-product-name" id="recapName">Booster NCE</span>
+				<span class="preorder-unit-price" id="recapPrice">5,00 €</span>
 			</div>
 			<div class="qty-selector">
 				<button class="qty-btn" id="qtyMinus">−</button>
 				<span class="qty-value" id="qtyValue">1</span>
 				<button class="qty-btn" id="qtyPlus">+</button>
 			</div>
-			<p class="preorder-note">Livraison estimée : <strong>23 Août 2026</strong></p>
+			<p class="preorder-note" style="text-align:center;">Livraison estimée : <strong>23 Août 2026</strong></p>
 		</div>
- 
-		<!-- STEP 2 : RÉSUMÉ -->
+
+		<!-- STEP 2 -->
 		<div class="preorder-step" id="step2">
 			<div class="preorder-summary-lines" id="summaryLines"></div>
 			<div class="preorder-summary-total">
@@ -243,53 +491,61 @@
 			</div>
 			<p class="preorder-note">Prix définitif confirmé à la sortie du produit.</p>
 		</div>
- 
-		<!-- STEP 3 : ADRESSE -->
+
+		<!-- STEP 3 -->
 		<div class="preorder-step" id="step3">
 			<div class="preorder-form">
 				<div class="form-row">
-					<input type="text" placeholder="Prénom" class="form-input" />
-					<input type="text" placeholder="Nom" class="form-input" />
+					<input type="text" placeholder="Prénom" class="form-input" autocomplete="given-name" />
+					<input type="text" placeholder="Nom" class="form-input" autocomplete="family-name" />
 				</div>
-				<input type="email" placeholder="Adresse e-mail" class="form-input full" />
-				<input type="text" placeholder="Adresse" class="form-input full" />
+				<input type="email" placeholder="Adresse e-mail" class="form-input full" autocomplete="email" />
+				<input type="text" placeholder="Adresse" class="form-input full" autocomplete="street-address" />
 				<div class="form-row">
-					<input type="text" placeholder="Code postal" class="form-input" />
-					<input type="text" placeholder="Ville" class="form-input" />
+					<input type="text" placeholder="Code postal" class="form-input" autocomplete="postal-code" />
+					<input type="text" placeholder="Ville" class="form-input" autocomplete="address-level2" />
 				</div>
-				<input type="text" placeholder="Pays" class="form-input full" />
+				<input type="text" placeholder="Pays" class="form-input full" autocomplete="country-name" />
 			</div>
 		</div>
- 
-		<!-- STEP 4 : PAIEMENT -->
+
+		<!-- STEP 4 -->
 		<div class="preorder-step" id="step4">
-			<p class="preorder-note" style="margin-bottom:16px;">Choisissez votre moyen de paiement :</p>
 			<div class="payment-options">
 				<label class="payment-option">
 					<input type="radio" name="payment" value="card" checked />
 					<span class="payment-icon">💳</span>
-					<span>Carte bancaire</span>
+					<span class="payment-label">
+						Carte bancaire
+						<small>Visa, Mastercard, CB</small>
+					</span>
 				</label>
 				<label class="payment-option">
 					<input type="radio" name="payment" value="paypal" />
 					<span class="payment-icon">🅿</span>
-					<span>PayPal</span>
+					<span class="payment-label">
+						PayPal
+						<small>Paiement sécurisé via PayPal</small>
+					</span>
 				</label>
 				<label class="payment-option">
 					<input type="radio" name="payment" value="virement" />
 					<span class="payment-icon">🏦</span>
-					<span>Virement bancaire</span>
+					<span class="payment-label">
+						Virement bancaire
+						<small>Délai de traitement 2–3 jours</small>
+					</span>
 				</label>
 			</div>
-			<p class="preorder-note">Aucun débit immédiat — vous serez prélevé à la date de sortie.</p>
+			<p class="preorder-note">Aucun débit immédiat — vous serez prélevé à la date de sortie du produit.</p>
 		</div>
- 
-		<!-- FOOTER NAVIGATION -->
+
 		<div class="preorder-footer">
 			<button class="preorder-btn-back" id="btnBack">← Retour</button>
 			<button class="preorder-btn-next" id="btnNext">Continuer →</button>
 		</div>
- 
+
 	</div>
 </body>
+
 </html>
