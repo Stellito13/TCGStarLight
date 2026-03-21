@@ -1,258 +1,261 @@
-        /* ========================= */
-        /* CARDLIST PAGE STYLES      */
-        /* ========================= */
- 
-        .cardlist-hero {
-            padding: 30px 5% 10px;
-        }
- 
-        .cardlist-hero h2 {
-            margin: 0 0 6px 0;
-        }
- 
-        .cardlist-hero p {
-            margin: 0;
-            color: #666;
-            font-size: 0.95rem;
-        }
- 
-        /* FILTERS */
- 
-        .filters {
-            display: flex;
-            gap: 10px;
-            padding: 18px 5%;
-            flex-wrap: wrap;
-            align-items: center;
-        }
- 
-        .filter-label {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #444;
-            margin-right: 4px;
-        }
- 
-        .filter-btn {
-            padding: 6px 16px;
-            border: 2px solid #222;
-            background: transparent;
-            font-family: "Outfit", sans-serif;
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background 0.18s, color 0.18s;
-            letter-spacing: 0.03em;
-        }
- 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #222;
-            color: #fff;
-        }
- 
-        .filter-btn.rarity-C { border-color: #888; }
-        .filter-btn.rarity-C:hover,
-        .filter-btn.rarity-C.active { background: #888; color: #fff; border-color: #888; }
- 
-        .filter-btn.rarity-R { border-color: #2b80d4; }
-        .filter-btn.rarity-R:hover,
-        .filter-btn.rarity-R.active { background: #2b80d4; color: #fff; border-color: #2b80d4; }
- 
-        .filter-btn.rarity-P { border-color: #00bcd4; }
-        .filter-btn.rarity-P:hover,
-        .filter-btn.rarity-P.active { background: #00bcd4; color: #fff; border-color: #00bcd4; }
- 
-        .filter-btn.rarity-G { border-color: #e6b800; }
-        .filter-btn.rarity-G:hover,
-        .filter-btn.rarity-G.active { background: #e6b800; color: #222; border-color: #e6b800; }
- 
-        /* SEARCH */
- 
-        .search-bar {
-            margin: 0 5% 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
- 
-        .search-bar input {
-            padding: 8px 14px;
-            border: 2px solid #ccc;
-            font-family: "Outfit", sans-serif;
-            font-size: 0.9rem;
-            border-radius: 4px;
-            outline: none;
-            width: 240px;
-            transition: border-color 0.2s;
-        }
- 
-        .search-bar input:focus {
-            border-color: #222;
-        }
- 
-        .card-count {
-            color: #888;
-            font-size: 0.85rem;
-        }
- 
-        /* GRID */
- 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-            gap: 24px;
-            padding: 0 5% 60px;
-        }
- 
-        /* CARD ITEM */
- 
-        .card-item {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            transition: transform 0.22s ease, box-shadow 0.22s ease;
-        }
- 
-        .card-item:hover {
-            transform: translateY(-6px) scale(1.03);
-        }
- 
-        .card-item img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-            display: block;
-        }
- 
-        .card-meta {
-            margin-top: 8px;
-            padding: 0 2px;
-        }
- 
-        .card-meta .card-name {
-            font-family: "New Rocker", system-ui;
-            font-size: 0.95rem;
-            color: #111;
-            display: block;
-        }
- 
-        .card-meta .card-id {
-            font-size: 0.75rem;
-            color: #888;
-            margin-top: 2px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
- 
-        .rarity-badge {
-            display: inline-block;
-            padding: 1px 7px;
-            border-radius: 3px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
- 
-        .badge-C { background: #e0e0e0; color: #555; }
-        .badge-R { background: #2b80d4; color: #fff; }
-        .badge-P { background: #00bcd4; color: #fff; }
-        .badge-G { background: #e6b800; color: #222; }
- 
-        /* HP pill */
-        .hp-pill {
-            display: inline-block;
-            padding: 1px 7px;
-            border-radius: 3px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            background: #f0f0f0;
-            color: #333;
-        }
- 
-        /* LIGHTBOX */
- 
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
- 
-        .lightbox.open {
-            display: flex;
-        }
- 
-        .lightbox-bg {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
- 
-        .lightbox-content {
-            position: relative;
-            z-index: 2001;
-            max-width: 340px;
-            width: 90%;
-            animation: lbIn 0.28s cubic-bezier(.22,1,.36,1);
-        }
- 
-        @keyframes lbIn {
-            from { opacity: 0; transform: scale(0.88) translateY(20px); }
-            to   { opacity: 1; transform: scale(1) translateY(0); }
-        }
- 
-        .lightbox-content img {
-            width: 100%;
-            border-radius: 14px;
-            box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-        }
- 
-        .lightbox-close {
-            position: absolute;
-            top: -14px;
-            right: -14px;
-            width: 34px;
-            height: 34px;
-            background: #fff;
-            border: none;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            line-height: 1;
-        }
- 
-        /* NO RESULTS */
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #aaa;
-            font-size: 1.1rem;
-        }
- 
-        /* SEPARATOR */
-        .section-sep {
-            width: 90%;
-            margin: 0 5% 28px;
-            border: none;
-            border-top: 1.5px solid #e0e0e0;
-        }
- 
-        @media (max-width: 600px) {
-            .cards-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 16px;
-            }
-            .filters { gap: 8px; }
-        }
+/* ========================= */
+/* CARDLIST PAGE — DARK      */
+/* ========================= */
+
+.cardlist-hero {
+    padding: 32px 5% 10px;
+}
+
+.cardlist-hero h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.8rem;
+}
+
+.cardlist-hero p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* FILTERS */
+.filters {
+    display: flex;
+    gap: 8px;
+    padding: 18px 5%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-label {
+    font-weight: 700;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-right: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.filter-btn {
+    padding: 6px 16px;
+    border: 1px solid var(--border-2);
+    background: transparent;
+    color: var(--text-2);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+    letter-spacing: 0.04em;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.filter-btn.rarity-C { border-color: var(--common); color: var(--common); }
+.filter-btn.rarity-C:hover,
+.filter-btn.rarity-C.active { background: var(--common); color: #fff; border-color: var(--common); }
+
+.filter-btn.rarity-R { border-color: var(--rare); color: var(--rare); }
+.filter-btn.rarity-R:hover,
+.filter-btn.rarity-R.active { background: var(--rare); color: #fff; border-color: var(--rare); }
+
+.filter-btn.rarity-P { border-color: var(--parallel); color: var(--parallel); }
+.filter-btn.rarity-P:hover,
+.filter-btn.rarity-P.active { background: var(--parallel); color: #fff; border-color: var(--parallel); }
+
+.filter-btn.rarity-G { border-color: var(--gold); color: var(--gold); }
+.filter-btn.rarity-G:hover,
+.filter-btn.rarity-G.active { background: var(--gold); color: #0d0d0d; border-color: var(--gold); }
+
+/* SEARCH */
+.search-bar {
+    margin: 0 5% 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-bar input {
+    padding: 10px 16px;
+    border: 1px solid var(--border-2);
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    outline: none;
+    width: 240px;
+    transition: border-color var(--transition);
+}
+
+.search-bar input::placeholder { color: var(--text-muted); }
+.search-bar input:focus { border-color: var(--gold); }
+
+.card-count {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+/* SEPARATOR */
+.section-sep {
+    width: 90%;
+    margin: 0 5% 28px;
+    border: none;
+    border-top: 1px solid var(--border);
+}
+
+/* GRID */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 0 5% 80px;
+}
+
+/* CARD ITEM */
+.card-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform var(--transition);
+}
+
+.card-item:hover { transform: translateY(-6px) scale(1.02); }
+
+.card-item img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+    display: block;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.card-meta {
+    margin-top: 8px;
+    padding: 0 2px;
+}
+
+.card-meta .card-name {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    color: var(--text);
+    display: block;
+}
+
+.card-meta .card-id {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* RARITY BADGES */
+.rarity-badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.badge-C { background: rgba(110,110,110,0.2); color: var(--common); border: 1px solid rgba(110,110,110,0.3); }
+.badge-R { background: rgba(74,127,193,0.2); color: var(--rare); border: 1px solid rgba(74,127,193,0.3); }
+.badge-P { background: rgba(42,173,189,0.2); color: var(--parallel); border: 1px solid rgba(42,173,189,0.3); }
+.badge-G { background: rgba(201,168,76,0.2); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+
+/* HP pill */
+.hp-pill {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    background: rgba(240,240,240,0.06);
+    color: var(--text-2);
+    border: 1px solid var(--border);
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.lightbox-content {
+    position: relative;
+    z-index: 2001;
+    max-width: 340px;
+    width: 90%;
+    animation: lbIn 0.28s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes lbIn {
+    from { opacity: 0; transform: scale(0.88) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.lightbox-content img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 60px rgba(201,168,76,0.1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -14px; right: -14px;
+    width: 34px; height: 34px;
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    line-height: 1;
+    color: var(--text-2);
+}
+
+/* NO RESULTS */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 14px;
+    }
+    .filters { gap: 7px; }
+}

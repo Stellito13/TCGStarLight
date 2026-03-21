@@ -4,36 +4,889 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cards Pack Edition</title>
-	<link rel="stylesheet" href="index.css" />
-	<script src="index.js" defer></script>
-	<link rel="stylesheet" href="products.css" />
-
+	<title>StarLight TCG — New Collection Edition</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Outfit:wght@100..900&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
+	<link rel="stylesheet" href="index.css" />
 
+	<style>
+		/* =============================== */
+		/* INDEX PAGE — SPECIFIC STYLES    */
+		/* =============================== */
+
+		/* HERO BANNER */
+		/* AD CAROUSEL — contained, white-bg slides */
+		.hero-banner {
+			position: relative;
+			width: 100%;
+			padding: 12px 16px;
+			box-sizing: border-box;
+		}
+
+		@media (min-width: 600px) {
+			.hero-banner { padding: 16px 28px; }
+		}
+
+		.hero-carousel-inner {
+			position: relative;
+			width: 100%;
+			max-width: 1060px;
+			margin: 0 auto;
+			border-radius: var(--radius);
+			overflow: hidden;
+			/* 16:9 ratio */
+			aspect-ratio: 16 / 9;
+			border: 1px solid var(--border);
+			background: #fff;
+			box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+		}
+
+		.hero-banner .ad-track {
+			display: flex;
+			height: 100%;
+			transition: transform 1.8s cubic-bezier(0.76,0,0.24,1);
+		}
+
+		.hero-banner .ad-slide {
+			min-width: 100%;
+			height: 100%;
+			flex-shrink: 0;
+			background: #fff;
+		}
+
+		.hero-banner .ad-slide img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		/* No overlay — slides are light/white */
+		.hero-overlay { display: none; }
+		.hero-content { display: none; }
+		.hero-kicker  { display: none; }
+		.hero-title   { display: none; }
+		.hero-subtitle { display: none; }
+		.hero-cta-row { display: none; }
+		.btn-hero-primary { display: none; }
+		.btn-hero-secondary { display: none; }
+
+		/* CAROUSEL DOTS */
+		.hero-dots {
+			position: absolute;
+			bottom: 22px;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 3;
+			display: flex;
+			gap: 6px;
+		}
+
+		.hero-dot {
+			width: 20px;
+			height: 3px;
+			border-radius: 2px;
+			background: rgba(13,13,13,0.18);
+			transition: background var(--transition), width var(--transition);
+			cursor: pointer;
+		}
+
+		.hero-dot.active {
+			background: var(--gold);
+			width: 32px;
+		}
+
+		/* COUNTDOWN */
+		.countdown-bar {
+			background: var(--surface);
+			border-bottom: 1px solid var(--border);
+			padding: 14px 5%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		.countdown-label {
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--text-muted);
+		}
+
+		.countdown-timer {
+			display: flex;
+			gap: 16px;
+		}
+
+		.countdown-unit {
+			text-align: center;
+		}
+
+		.countdown-num {
+			font-family: var(--font-display);
+			font-size: 1.6rem;
+			color: var(--gold);
+			line-height: 1;
+			display: block;
+		}
+
+		.countdown-unit-label {
+			font-size: 0.6rem;
+			color: var(--text-muted);
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin-top: 3px;
+			display: block;
+		}
+
+		.countdown-sep {
+			font-family: var(--font-display);
+			font-size: 1.4rem;
+			color: var(--border-2);
+			align-self: center;
+			margin-top: -4px;
+		}
+
+		.countdown-date {
+			font-size: 0.78rem;
+			color: var(--text-2);
+		}
+
+		@media (max-width: 480px) {
+			.countdown-bar { justify-content: center; }
+			.countdown-label { width: 100%; text-align: center; }
+		}
+
+		/* SECTION HEADER */
+		.section-header {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			padding: 52px 5% 20px;
+		}
+
+		.section-header h2 {
+			margin: 0;
+			font-size: 1.5rem;
+			letter-spacing: 0.02em;
+		}
+
+		.section-header a {
+			font-size: 0.75rem;
+			color: var(--text-muted);
+			text-decoration: none;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			font-weight: 600;
+			transition: color var(--transition);
+		}
+		.section-header a:hover { color: var(--gold); }
+
+		/* CARD CAROUSEL SECTION */
+		/* =============================== */
+		/* CARD CAROUSEL REDESIGN          */
+		/* =============================== */
+
+		.cards-section-wrapper {
+			margin: 0 5%;
+			border-radius: var(--radius-lg);
+			overflow: hidden;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			position: relative;
+		}
+
+		/* Subtle radial glow behind the center card */
+		.cards-section-wrapper::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 340px;
+			height: 340px;
+			background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		.cards-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0 0 28px;
+			overflow: hidden;
+			position: relative;
+			z-index: 1;
+		}
+
+		/* Top label inside the panel */
+		.carousel-top-label {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 18px 22px 0;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		.carousel-top-tag {
+			font-size: 0.65rem;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--text-muted);
+		}
+
+		.carousel-top-hint {
+			font-size: 0.68rem;
+			color: var(--text-muted);
+			letter-spacing: 0.06em;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+
+		.carousel-top-hint::before {
+			content: "↺";
+			font-size: 0.9rem;
+			color: var(--gold);
+		}
+
+		/* Override base carousel from index.css for this context */
+		.cards-section-wrapper .carousel {
+			height: 46vw;
+			max-height: 400px;
+			min-height: 220px;
+		}
+
+		/* Bottom info strip — name + rarity of center card */
+		.carousel-info-strip {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			padding: 0 22px;
+			width: 100%;
+			box-sizing: border-box;
+			margin-top: 4px;
+			min-height: 32px;
+		}
+
+		.carousel-card-name {
+			font-family: var(--font-display);
+			font-size: 1rem;
+			color: var(--text);
+			transition: opacity 0.3s ease;
+		}
+
+		.carousel-card-rarity {
+			font-size: 0.65rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 2px 8px;
+			border-radius: 2px;
+			transition: opacity 0.3s ease;
+		}
+
+		.carousel-card-rarity.r-C { background: rgba(110,110,110,0.2); color: var(--common); border: 1px solid rgba(110,110,110,0.3); }
+		.carousel-card-rarity.r-R { background: rgba(74,127,193,0.2);  color: var(--rare);   border: 1px solid rgba(74,127,193,0.3); }
+		.carousel-card-rarity.r-P { background: rgba(42,173,189,0.2);  color: var(--parallel); border: 1px solid rgba(42,173,189,0.3); }
+		.carousel-card-rarity.r-G { background: rgba(201,168,76,0.2);  color: var(--gold);   border: 1px solid rgba(201,168,76,0.3); }
+
+		/* Bottom CTA */
+		.carousel-cta {
+			display: flex;
+			justify-content: center;
+			margin-top: 16px;
+		}
+
+		.btn-carousel-cta {
+			padding: 10px 24px;
+			background: transparent;
+			color: var(--text-2);
+			border: 1px solid var(--border-2);
+			border-radius: var(--radius-sm);
+			font-family: var(--font-body);
+			font-size: 0.78rem;
+			font-weight: 600;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			text-decoration: none;
+			cursor: pointer;
+			transition: border-color var(--transition), color var(--transition);
+		}
+		.btn-carousel-cta:hover { border-color: var(--gold); color: var(--gold); }
+
+		/* Divider lines left/right of carousel */
+		.carousel-divider {
+			width: 100%;
+			height: 1px;
+			background: var(--border);
+			margin: 0;
+		}
+
+		/* FEATURES STRIP */
+		.features-strip {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1px;
+			background: var(--border);
+			margin: 52px 5% 0;
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			overflow: hidden;
+		}
+
+		.feature-item {
+			background: var(--surface);
+			padding: 24px 20px;
+			text-align: center;
+		}
+
+		.feature-icon {
+			font-size: 1.5rem;
+			display: block;
+			margin-bottom: 10px;
+			color: var(--gold);
+		}
+
+		.feature-title {
+			font-family: var(--font-display);
+			font-size: 0.95rem;
+			color: var(--text);
+			margin: 0 0 4px;
+		}
+
+		.feature-desc {
+			font-size: 0.74rem;
+			color: var(--text-muted);
+			line-height: 1.5;
+			margin: 0;
+		}
+
+		@media (max-width: 560px) {
+			.features-strip { grid-template-columns: 1fr; }
+		}
+
+		/* PRODUCTS MINI GRID */
+		.products-mini {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 12px;
+			padding: 0 5%;
+		}
+
+		@media (min-width: 700px) {
+			.products-mini { grid-template-columns: repeat(4, 1fr); }
+		}
+
+		.product-mini-card {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			overflow: hidden;
+			cursor: pointer;
+			transition: transform var(--transition), border-color var(--transition);
+			text-decoration: none;
+			display: block;
+		}
+
+		.product-mini-card:hover {
+			transform: translateY(-4px);
+			border-color: var(--gold-dark);
+		}
+
+		.pmc-img {
+			width: 100%;
+			aspect-ratio: 3/2;
+			background: var(--bg-3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 2.2rem;
+			color: var(--text-muted);
+			overflow: hidden;
+		}
+
+		.pmc-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.pmc-body {
+			padding: 12px 14px;
+		}
+
+		.pmc-tag {
+			font-size: 0.6rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--gold);
+		}
+
+		.pmc-name {
+			font-family: var(--font-display);
+			font-size: 0.9rem;
+			color: var(--text);
+			margin: 3px 0 4px;
+			line-height: 1.2;
+		}
+
+		.pmc-price {
+			font-size: 0.88rem;
+			font-weight: 700;
+			color: var(--text-2);
+		}
+
+		/* RELEASE INFO BAND */
+		.release-band {
+			margin: 52px 5% 0;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+		}
+
+		@media (min-width: 700px) {
+			.release-band { flex-direction: row; }
+		}
+
+		.release-visual {
+			background: var(--bg-3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 32px;
+			flex: 0 0 280px;
+		}
+
+		.release-visual img {
+			width: 100%;
+			max-width: 240px;
+			border-radius: var(--radius);
+		}
+
+		.release-info {
+			padding: 32px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 14px;
+		}
+
+		.release-kicker {
+			font-size: 0.68rem;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--gold);
+		}
+
+		.release-title {
+			font-family: var(--font-display);
+			font-size: 1.8rem;
+			color: var(--text);
+			line-height: 1.1;
+			margin: 0;
+		}
+
+		.release-details {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.release-detail-row {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 0.85rem;
+			color: var(--text-2);
+		}
+
+		.release-detail-row::before {
+			content: "✦";
+			color: var(--gold);
+			font-size: 0.6rem;
+			flex-shrink: 0;
+		}
+
+		.release-cta {
+			margin-top: 8px;
+		}
+
+		/* RARITY GUIDE */
+		.rarity-guide {
+			margin: 52px 5% 0;
+		}
+
+		.rarity-guide h2 {
+			margin: 0 0 20px;
+			font-size: 1.5rem;
+		}
+
+		.rarity-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
+		}
+
+		@media (min-width: 600px) {
+			.rarity-grid { grid-template-columns: repeat(4, 1fr); }
+		}
+
+		.rarity-item {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-sm);
+			padding: 18px 16px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.rarity-item::before {
+			content: "";
+			position: absolute;
+			top: 0; left: 0; right: 0;
+			height: 2px;
+		}
+
+		.rarity-item.ri-C::before { background: var(--common); }
+		.rarity-item.ri-R::before { background: var(--rare); }
+		.rarity-item.ri-P::before { background: var(--parallel); }
+		.rarity-item.ri-G::before { background: var(--gold); }
+
+		.rarity-code {
+			font-size: 0.65rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin: 0 0 4px;
+		}
+
+		.rarity-item.ri-C .rarity-code { color: var(--common); }
+		.rarity-item.ri-R .rarity-code { color: var(--rare); }
+		.rarity-item.ri-P .rarity-code { color: var(--parallel); }
+		.rarity-item.ri-G .rarity-code { color: var(--gold); }
+
+		.rarity-name {
+			font-family: var(--font-display);
+			font-size: 1rem;
+			color: var(--text);
+			margin: 0 0 6px;
+		}
+
+		.rarity-desc {
+			font-size: 0.74rem;
+			color: var(--text-muted);
+			line-height: 1.5;
+			margin: 0;
+		}
+
+		/* SOCIAL STRIP */
+		.social-strip {
+			margin: 52px 5% 0;
+			display: flex;
+			gap: 12px;
+			align-items: center;
+			padding: 24px;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			flex-wrap: wrap;
+		}
+
+		.social-strip-text {
+			flex: 1;
+			min-width: 200px;
+		}
+
+		.social-strip-title {
+			font-family: var(--font-display);
+			font-size: 1.1rem;
+			color: var(--text);
+			margin: 0 0 4px;
+		}
+
+		.social-strip-sub {
+			font-size: 0.78rem;
+			color: var(--text-muted);
+			margin: 0;
+		}
+
+		.social-strip-links {
+			display: flex;
+			gap: 10px;
+		}
+
+		.social-link {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 18px;
+			border: 1px solid var(--border-2);
+			border-radius: var(--radius-sm);
+			color: var(--text);
+			text-decoration: none;
+			font-size: 0.8rem;
+			font-weight: 600;
+			letter-spacing: 0.04em;
+			transition: border-color var(--transition), color var(--transition);
+		}
+
+		.social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+		.social-link svg {
+			width: 16px;
+			height: 16px;
+			fill: currentColor;
+		}
+
+		/* PREORDER PANEL */
+		.preorder-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: rgba(0,0,0,0.7);
+			z-index: 500;
+			backdrop-filter: blur(6px);
+			-webkit-backdrop-filter: blur(6px);
+		}
+		.preorder-overlay.open { display: block; }
+
+		.preorder-panel {
+			position: fixed;
+			bottom: 0; left: 0; right: 0;
+			z-index: 600;
+			background: var(--bg-2);
+			border-radius: 20px 20px 0 0;
+			padding: 0 20px 32px;
+			box-shadow: 0 -12px 60px rgba(0,0,0,0.6);
+			border-top: 1px solid var(--border-2);
+			transform: translateY(100%);
+			transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+			max-height: 88vh;
+			overflow-y: auto;
+			overflow-x: hidden;
+			box-sizing: border-box;
+			width: 100%;
+		}
+		@media (min-width: 600px) { .preorder-panel { padding: 0 28px 36px; border-radius: 24px 24px 0 0; } }
+		.preorder-panel.open { transform: translateY(0); }
+
+		.preorder-handle {
+			width: 36px; height: 3px;
+			background: var(--border-2); border-radius: 2px;
+			margin: 14px auto 0;
+		}
+
+		.preorder-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding: 16px 0 10px;
+		}
+
+		.preorder-step-label {
+			margin: 0 0 4px;
+			font-size: 0.65rem; font-weight: 700;
+			letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
+		}
+
+		.preorder-title {
+			margin: 0;
+			font-family: var(--font-display);
+			font-size: 1.25rem; color: var(--text);
+		}
+
+		.preorder-close {
+			background: var(--surface-2); border: 1px solid var(--border-2);
+			width: 36px; height: 36px; border-radius: 50%;
+			font-size: 13px; cursor: pointer; flex-shrink: 0;
+			display: flex; align-items: center; justify-content: center;
+			color: var(--text-2);
+			transition: background var(--transition);
+		}
+		.preorder-close:hover { background: var(--border-2); }
+
+		.preorder-progress {
+			height: 2px; background: var(--border);
+			border-radius: 2px; margin-bottom: 22px; overflow: hidden;
+		}
+		.preorder-progress-bar {
+			height: 100%; background: var(--gold);
+			border-radius: 2px; transition: width 0.4s ease; width: 25%;
+		}
+
+		.preorder-step { display: none; }
+		.preorder-step.active { display: block; }
+
+		.preorder-product-recap {
+			display: flex; align-items: center; gap: 10px;
+			margin-bottom: 20px; padding: 14px 16px;
+			background: var(--surface); border-radius: var(--radius-sm);
+			border: 1px solid var(--border);
+		}
+		.preorder-product-name { font-weight: 600; font-size: 0.9rem; color: var(--text); min-width: 0; flex: 1; }
+		.preorder-unit-price   { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+
+		.qty-selector {
+			display: flex; align-items: center; justify-content: center;
+			margin: 0 auto 20px; width: fit-content;
+			border: 1px solid var(--border-2); border-radius: var(--radius-sm); overflow: hidden;
+			background: var(--surface);
+		}
+		.qty-btn {
+			width: 60px; height: 60px; background: transparent; border: none;
+			font-size: 1.6rem; cursor: pointer; font-family: var(--font-body); color: var(--text);
+			transition: background var(--transition);
+		}
+		.qty-btn:active { background: var(--border); }
+		.qty-value {
+			width: 68px; text-align: center; font-size: 1.3rem;
+			font-weight: 700; color: var(--text);
+			border-left: 1px solid var(--border-2); border-right: 1px solid var(--border-2);
+			line-height: 60px;
+		}
+
+		.preorder-summary-lines { display: flex; flex-direction: column; }
+		.summary-line {
+			display: flex; justify-content: space-between;
+			font-size: 0.9rem; color: var(--text-2);
+			padding: 13px 0; border-bottom: 1px solid var(--border);
+		}
+		.preorder-summary-total {
+			display: flex; justify-content: space-between;
+			font-weight: 800; font-size: 1.05rem; color: var(--text);
+			padding: 16px 0 10px; border-top: 1px solid var(--gold-dark); margin-top: 4px;
+		}
+
+		.preorder-form { display: flex; flex-direction: column; gap: 10px; }
+		.form-row { display: flex; flex-direction: column; gap: 10px; }
+		@media (min-width: 480px) { .form-row { flex-direction: row; } }
+
+		.form-input {
+			flex: 1; padding: 14px;
+			border: 1px solid var(--border-2); border-radius: var(--radius-sm);
+			font-family: var(--font-body); font-size: 1rem;
+			outline: none; transition: border-color var(--transition);
+			box-sizing: border-box; min-width: 0;
+			background: var(--surface); color: var(--text); -webkit-appearance: none;
+		}
+		.form-input.full { width: 100%; }
+		.form-input:focus { border-color: var(--gold); }
+		.form-input::placeholder { color: var(--text-muted); }
+
+		.payment-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+		.payment-option {
+			display: flex; align-items: center; gap: 14px;
+			padding: 16px; border: 1px solid var(--border-2);
+			border-radius: var(--radius-sm); cursor: pointer;
+			font-size: 0.92rem; font-weight: 600; color: var(--text);
+			transition: border-color var(--transition), background var(--transition);
+			background: var(--surface);
+		}
+		.payment-option:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+		.payment-option input { display: none; }
+		.payment-icon { font-size: 1.4rem; flex-shrink: 0; }
+		.payment-label { flex: 1; }
+		.payment-label small { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+
+		.preorder-note { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; margin: 10px 0 0; }
+
+		.preorder-footer { display: flex; gap: 10px; margin-top: 24px; }
+
+		.preorder-btn-back {
+			padding: 16px 18px; background: transparent;
+			border: 1px solid var(--border-2); border-radius: var(--radius-sm);
+			font-family: var(--font-body); font-size: 0.88rem;
+			font-weight: 600; cursor: pointer; color: var(--text-muted);
+			transition: border-color var(--transition), color var(--transition); white-space: nowrap;
+		}
+		.preorder-btn-back:hover { border-color: var(--text-2); color: var(--text); }
+
+		.preorder-btn-next {
+			flex: 1; padding: 16px 14px;
+			background: var(--gold); color: #0d0d0d;
+			border: 1px solid var(--gold); border-radius: var(--radius-sm);
+			font-family: var(--font-body); font-size: 0.95rem;
+			font-weight: 800; letter-spacing: 0.04em; cursor: pointer;
+			transition: background var(--transition);
+			white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+		}
+		.preorder-btn-next:hover { background: var(--gold-light); border-color: var(--gold-light); }
+		.preorder-btn-next.success { background: #2a9d5c; border-color: #2a9d5c; color: #fff; }
+
+		/* SITE FOOTER */
+		.site-footer {
+			border-top: 1px solid var(--border);
+			padding: 40px 5%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+			margin-top: 60px;
+		}
+
+		.footer-logo { width: 90px; filter: invert(1); opacity: 0.25; }
+
+		.footer-social { display: flex; gap: 12px; }
+		.footer-social a {
+			width: 36px; height: 36px;
+			border: 1px solid var(--border-2); border-radius: 50%;
+			display: flex; align-items: center; justify-content: center;
+			color: var(--text-muted); text-decoration: none;
+			font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
+			transition: border-color var(--transition), color var(--transition);
+		}
+		.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+
+		.footer-links {
+			display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+		}
+		.footer-links a {
+			font-size: 0.72rem; color: var(--text-muted); text-decoration: none;
+			letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+			transition: color var(--transition);
+		}
+		.footer-links a:hover { color: var(--gold); }
+
+		.footer-copy { font-size: 0.68rem; color: var(--text-muted); text-align: center; line-height: 1.7; }
+
+		/* SPACER */
+		.section-spacer { height: 60px; }
+	</style>
 </head>
 
 <body>
 
+	<!-- ========================= -->
+	<!-- HEADER                    -->
+	<!-- ========================= -->
+
 	<header>
-
-		<a href="index.html"><img class="logo" src="./img/star2.png" alt="StarLight logo" /></a>
-
+		<a href="index.html"><img class="logo" src="./img/star2.png" alt="StarLight TCG" /></a>
 		<div class="menu" id="menuBtn">
 			<div></div>
 			<div></div>
 			<div></div>
 		</div>
-
 	</header>
 
 	<!-- ========================= -->
-	<!-- MENU OVERLAY -->
+	<!-- MENU OVERLAY              -->
 	<!-- ========================= -->
 
 	<div class="menu-overlay" id="menuOverlay">
@@ -41,416 +894,286 @@
 		<nav class="menu-nav">
 			<ul>
 				<li><a href="index.html">Accueil</a></li>
-				<li><a href="products.html">Products</a></li>
+				<li><a href="products.html">Produits</a></li>
 				<li><a href="404.html">CardList</a></li>
 			</ul>
 		</nav>
 	</div>
 
-
 	<!-- ========================= -->
-	<!-- CAROUSEL PUBLICITE -->
+	<!-- HERO BANNER CAROUSEL      -->
 	<!-- ========================= -->
 
-	<div class="ad-carousel-wrapper">
-		<div class="ad-carousel">
-
+	<section class="hero-banner">
+		<div class="hero-carousel-inner">
 			<div class="ad-track" id="adTrack">
-
 				<div class="ad-slide">
-					<img class="img_accueil" src="./img/PR-Vol-52.png" />
+					<img src="./img/PR-Vol-5.png" alt="New Collection Edition StarLight" />
 				</div>
-
 				<div class="ad-slide">
-					<img class="img_accueil" src="./img/PR-Vol-51.png" />
+					<img src="./img/PR-Vol-51.png" alt="StarLight God Pack" />
 				</div>
-
 				<div class="ad-slide">
-					<img class="img_accueil" src="./img/PR-Vol-5.png" />
+					<img src="./img/PR-Vol-52.png" alt="StarLight Collab Pikmin" />
 				</div>
-
 			</div>
-
+			<div class="hero-dots" id="heroDots">
+				<div class="hero-dot active" data-index="0"></div>
+				<div class="hero-dot" data-index="1"></div>
+				<div class="hero-dot" data-index="2"></div>
+			</div>
 		</div>
-	</div>
-
-
-	<h2>Cards Pack Edition</h2>
+	</section>
 
 	<!-- ========================= -->
-	<!-- CAROUSEL CARTES -->
+	<!-- COUNTDOWN BAR             -->
 	<!-- ========================= -->
 
-
-	<div class="cards-section">
-
-		<div class="carousel" id="carousel">
-
-			<div class="card left">
-				<div class="card-inner">
-					<div class="card-front"><img src="./cards/Rcarte2.png" /></div>
-					<div class="card-back"><img src="./cards/Arriere.png" /></div>
-				</div>
+	<div class="countdown-bar">
+		<span class="countdown-label">Sortie dans</span>
+		<div class="countdown-timer" id="countdown">
+			<div class="countdown-unit">
+				<span class="countdown-num" id="cdDays">--</span>
+				<span class="countdown-unit-label">Jours</span>
 			</div>
-
-			<div class="card center">
-				<div class="card-inner">
-					<div class="card-front"><img src="./cards/Ccarte1.png" /></div>
-					<div class="card-back"><img src="./cards/Arriere.png" /></div>
-				</div>
+			<span class="countdown-sep">:</span>
+			<div class="countdown-unit">
+				<span class="countdown-num" id="cdHours">--</span>
+				<span class="countdown-unit-label">Heures</span>
 			</div>
-
-			<div class="card right">
-				<div class="card-inner">
-					<div class="card-front"><img src="./cards/Pcarte3.png" /></div>
-					<div class="card-back"><img src="./cards/Arriere.png" /></div>
-				</div>
+			<span class="countdown-sep">:</span>
+			<div class="countdown-unit">
+				<span class="countdown-num" id="cdMins">--</span>
+				<span class="countdown-unit-label">Minutes</span>
 			</div>
-
+			<span class="countdown-sep">:</span>
+			<div class="countdown-unit">
+				<span class="countdown-num" id="cdSecs">--</span>
+				<span class="countdown-unit-label">Secondes</span>
+			</div>
 		</div>
-
+		<span class="countdown-date">23 Août 2026</span>
 	</div>
 
+	<!-- ========================= -->
+	<!-- FEATURES STRIP            -->
+	<!-- ========================= -->
 
-	<!-- ======================================= -->
-	<!-- LISTE DES PRODUITS                      -->
-	<!-- ======================================= -->
-
-	<div class="products-list" id="productsList">
-		<div class="products-hero">
-			<h2>Products</h2>
-			<p>New Collection Edition — Set #1 · StarLight CO.</p>
+	<div class="features-strip">
+		<div class="feature-item">
+			<span class="feature-icon">✦</span>
+			<p class="feature-title">35 Cartes</p>
+			<p class="feature-desc">4 raretés : Commune, Rare, Parallèle & Gold</p>
 		</div>
-
-		<div class="products-grid">
-
-			<div class="product-card" data-id="booster">
-				<div class="pc-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
-				<div class="pc-body">
-					<span class="pc-tag">Booster</span>
-					<p class="pc-name">Booster NCE</p>
-					<p class="pc-price">5,00 €</p>
-					<button class="pc-btn">Voir le produit</button>
-				</div>
-			</div>
-
-			<div class="product-card" data-id="display">
-				<div class="pc-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
-				<div class="pc-body">
-					<span class="pc-tag">Display Box</span>
-					<p class="pc-name">Display Box NCE</p>
-					<p class="pc-price">55,00 €</p>
-					<button class="pc-btn">Voir le produit</button>
-				</div>
-			</div>
-
-			<div class="product-card" data-id="deck">
-				<div class="pc-img">✦</div>
-				<div class="pc-body">
-					<span class="pc-tag">Deck</span>
-					<p class="pc-name">Deck Préconstruit NCE</p>
-					<p class="pc-price">18,00 €</p>
-					<button class="pc-btn">Voir le produit</button>
-				</div>
-			</div>
-
-			<div class="product-card" data-id="bundle">
-				<div class="pc-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
-				<div class="pc-body">
-					<span class="pc-tag">Bundle</span>
-					<p class="pc-name">Coffret Collector NCE</p>
-					<p class="pc-price">22,00 €</p>
-					<button class="pc-btn">Voir le produit</button>
-				</div>
-			</div>
-
+		<div class="feature-item">
+			<span class="feature-icon">◈</span>
+			<p class="feature-title">7 par Booster</p>
+			<p class="feature-desc">1 rare garantie · Chance d'une Gold</p>
+		</div>
+		<div class="feature-item">
+			<span class="feature-icon">⬡</span>
+			<p class="feature-title">Set #1 · NCE – FR</p>
+			<p class="feature-desc">Édition française officielle StarLight CO.</p>
 		</div>
 	</div>
 
-	<!-- ======================================= -->
-	<!-- PAGES PRODUIT DÉTAIL                    -->
-	<!-- ======================================= -->
+	<!-- ========================= -->
+	<!-- CARD CAROUSEL PREVIEW     -->
+	<!-- ========================= -->
 
-	<!-- BOOSTER -->
-	<div class="product-detail" id="detail-booster">
-		<button class="detail-back" onclick="showList()">← Tous les produits</button>
-		<div class="detail-hero">
-			<div class="detail-img-wrap">
-				<div class="detail-img-main" id="main-img-booster"><img src="./img/mockupcards.png" alt="Booster NCE" />
-				</div>
-				<div class="detail-thumbs">
-					<div class="detail-thumb active">✦</div>
-					<div class="detail-thumb">✦</div>
-					<div class="detail-thumb">✦</div>
-				</div>
+	<div class="section-header">
+		<h2>Les Cartes</h2>
+		<a href="404.html">Voir toutes les cartes →</a>
+	</div>
+
+	<div class="cards-section-wrapper">
+		<div class="cards-section">
+
+			<!-- Top bar -->
+			<div class="carousel-top-label">
+				<span class="carousel-top-tag">✦ New Collection Edition — Set #1</span>
+				<span class="carousel-top-hint">Cliquer pour retourner</span>
 			</div>
-			<div class="detail-info">
-				<span class="detail-tag">Booster</span>
-				<h1 class="detail-name">Booster NCE<br>New Collection Edition</h1>
-				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
-				<p class="detail-price">5,00 €</p>
-				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
-				<div class="detail-divider"></div>
-				<p class="detail-section-title">Contenu du booster</p>
-				<div class="detail-contents">
-					<div class="detail-content-row"><span></span><span>7 cartes par booster</span></div>
-					<div class="detail-content-row"><span></span><span>1 carte rare garantie</span></div>
-					<div class="detail-content-row"><span></span><span>Chance d'obtenir une carte Gold</span></div>
-					<div class="detail-content-row"><span></span><span>Emballage scellé officiel StarLight</span></div>
-				</div>
-				<div class="detail-divider"></div>
-				<p class="detail-desc">
-					Le booster New Collection Edition est le point d'entrée idéal dans l'univers StarLight.
-					Chaque pack contient 7 cartes soigneusement sélectionnées, avec au minimum une carte rare garantie.
-					Les cartes Gold et Prismatic restent rares et très recherchées des collectionneurs.
-				</p>
-				<div class="detail-cta">
-					<button class="btn-detail-preorder" data-name="Booster NCE" data-tag="Booster"
-						data-price="5.00">Précommander</button>
-					<button class="btn-detail-wishlist">♡</button>
-				</div>
-				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
-					sortie.</p>
-			</div>
-		</div>
-		<div class="detail-related">
-			<h3>Vous aimerez aussi</h3>
-			<div class="related-grid">
-				<div class="related-card" data-id="display">
-					<div class="related-card-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Display Box NCE</p>
-						<p class="related-card-price">55,00 €</p>
+
+			<div class="carousel-divider" style="margin-top:14px;"></div>
+
+			<!-- Carousel 3D -->
+			<div class="carousel" id="carousel">
+				<div class="card left" data-name="Nathan" data-rarity="R">
+					<div class="card-inner">
+						<div class="card-front"><img src="./cards/Rcarte2.png" alt="Carte R" /></div>
+						<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
 					</div>
 				</div>
-				<div class="related-card" data-id="deck">
-					<div class="related-card-img">✦</div>
-					<div class="related-card-body">
-						<p class="related-card-name">Deck Préconstruit NCE</p>
-						<p class="related-card-price">18,00 €</p>
+				<div class="card center" data-name="Nathan" data-rarity="C">
+					<div class="card-inner">
+						<div class="card-front"><img src="./cards/Ccarte1.png" alt="Carte C" /></div>
+						<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
 					</div>
 				</div>
-				<div class="related-card" data-id="bundle">
-					<div class="related-card-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Coffret Collector NCE</p>
-						<p class="related-card-price">22,00 €</p>
+				<div class="card right" data-name="Nathan" data-rarity="P">
+					<div class="card-inner">
+						<div class="card-front"><img src="./cards/Pcarte3.png" alt="Carte P" /></div>
+						<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
 					</div>
 				</div>
 			</div>
+
+			<div class="carousel-divider"></div>
+
+			<!-- Info strip -->
+			<div class="carousel-info-strip">
+				<span class="carousel-card-name" id="carouselCardName">Nathan</span>
+				<span class="carousel-card-rarity r-C" id="carouselCardRarity">C — Commune</span>
+			</div>
+
+			<!-- CTA -->
+			<div class="carousel-cta">
+				<a href="404.html" class="btn-carousel-cta">Voir les 35 cartes →</a>
+			</div>
+
 		</div>
 	</div>
 
-	<!-- DISPLAY BOX -->
-	<div class="product-detail" id="detail-display">
-		<button class="detail-back" onclick="showList()">← Tous les produits</button>
-		<div class="detail-hero">
-			<div class="detail-img-wrap">
-				<div class="detail-img-main"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
-				<div class="detail-thumbs">
-					<div class="detail-thumb active">✦</div>
-					<div class="detail-thumb">✦</div>
-					<div class="detail-thumb">✦</div>
-				</div>
+	<!-- ========================= -->
+	<!-- PRODUITS MINI GRID        -->
+	<!-- ========================= -->
+
+	<div class="section-header">
+		<h2>Produits</h2>
+		<a href="products.html">Voir tous les produits →</a>
+	</div>
+
+	<div class="products-mini">
+		<a class="product-mini-card" href="products.html">
+			<div class="pmc-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
+			<div class="pmc-body">
+				<p class="pmc-tag">Booster</p>
+				<p class="pmc-name">Booster NCE</p>
+				<p class="pmc-price">5,00 €</p>
 			</div>
-			<div class="detail-info">
-				<span class="detail-tag">Display Box</span>
-				<h1 class="detail-name">Display Box NCE<br>New Collection Edition</h1>
-				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
-				<p class="detail-price">55,00 €</p>
-				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
-				<div class="detail-divider"></div>
-				<p class="detail-section-title">Contenu de la display</p>
-				<div class="detail-contents">
-					<div class="detail-content-row"><span></span><span>12 boosters NCE</span></div>
-					<div class="detail-content-row"><span></span><span>84 cartes au total</span></div>
-					<div class="detail-content-row"><span></span><span>Au moins 12 cartes rares</span></div>
-					<div class="detail-content-row"><span></span><span>Boîte collector réutilisable</span></div>
-				</div>
-				<div class="detail-divider"></div>
-				<p class="detail-desc">
-					La Display Box StarLight est la référence pour les joueurs sérieux et les collectionneurs.
-					Elle regroupe 12 boosters scellés pour un maximum de chances d'obtenir des cartes rares,
-					Prismatic et Gold de la New Collection Edition.
-				</p>
-				<div class="detail-cta">
-					<button class="btn-detail-preorder" data-name="Display Box NCE" data-tag="Display Box"
-						data-price="55.00">Précommander</button>
-					<button class="btn-detail-wishlist">♡</button>
-				</div>
-				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
-					sortie.</p>
+		</a>
+		<a class="product-mini-card" href="products.html">
+			<div class="pmc-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
+			<div class="pmc-body">
+				<p class="pmc-tag">Display Box</p>
+				<p class="pmc-name">Display Box NCE</p>
+				<p class="pmc-price">55,00 €</p>
 			</div>
+		</a>
+		<a class="product-mini-card" href="products.html">
+			<div class="pmc-img">✦</div>
+			<div class="pmc-body">
+				<p class="pmc-tag">Deck</p>
+				<p class="pmc-name">Deck Préconstruit NCE</p>
+				<p class="pmc-price">18,00 €</p>
+			</div>
+		</a>
+		<a class="product-mini-card" href="products.html">
+			<div class="pmc-img"><img src="./img/mockupcards2.png" alt="Coffret Collector NCE" /></div>
+			<div class="pmc-body">
+				<p class="pmc-tag">Bundle</p>
+				<p class="pmc-name">Coffret Collector NCE</p>
+				<p class="pmc-price">22,00 €</p>
+			</div>
+		</a>
+	</div>
+
+	<!-- ========================= -->
+	<!-- RELEASE INFO              -->
+	<!-- ========================= -->
+
+	<div class="release-band">
+		<div class="release-visual">
+			<img src="./img/mockupcards2.png" alt="StarLight NCE" />
 		</div>
-		<div class="detail-related">
-			<h3>Vous aimerez aussi</h3>
-			<div class="related-grid">
-				<div class="related-card" data-id="booster">
-					<div class="related-card-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Booster NCE</p>
-						<p class="related-card-price">5,00 €</p>
-					</div>
-				</div>
-				<div class="related-card" data-id="bundle">
-					<div class="related-card-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Coffret Collector NCE</p>
-						<p class="related-card-price">22,00 €</p>
-					</div>
-				</div>
-				<div class="related-card" data-id="deck">
-					<div class="related-card-img">✦</div>
-					<div class="related-card-body">
-						<p class="related-card-name">Deck Préconstruit NCE</p>
-						<p class="related-card-price">18,00 €</p>
-					</div>
-				</div>
+		<div class="release-info">
+			<p class="release-kicker">New Collection Edition · Set #1</p>
+			<h2 class="release-title">StarLight<br>Trading Cards Games</h2>
+			<div class="release-details">
+				<div class="release-detail-row">7 cartes par booster · 1 rare garantie</div>
+				<div class="release-detail-row">12 boosters par display box</div>
+				<div class="release-detail-row">18 display box par carton</div>
+				<div class="release-detail-row">Sortie estimée : 23 Août 2026 · FR</div>
+			</div>
+			<div class="release-cta">
+				<a href="products.html" class="btn-hero-primary">Précommander maintenant</a>
 			</div>
 		</div>
 	</div>
 
-	<!-- DECK -->
-	<div class="product-detail" id="detail-deck">
-		<button class="detail-back" onclick="showList()">← Tous les produits</button>
-		<div class="detail-hero">
-			<div class="detail-img-wrap">
-				<div class="detail-img-main">✦</div>
-				<div class="detail-thumbs">
-					<div class="detail-thumb active">✦</div>
-					<div class="detail-thumb">✦</div>
-					<div class="detail-thumb">✦</div>
-				</div>
+	<!-- ========================= -->
+	<!-- RARITY GUIDE              -->
+	<!-- ========================= -->
+
+	<div class="rarity-guide">
+		<h2>Guide des Raretés</h2>
+		<div class="rarity-grid">
+			<div class="rarity-item ri-C">
+				<p class="rarity-code">C — Commune</p>
+				<p class="rarity-name">Common</p>
+				<p class="rarity-desc">Les cartes communes constituent la base du jeu. Faciles à obtenir, essentielles pour construire un deck solide.</p>
 			</div>
-			<div class="detail-info">
-				<span class="detail-tag">Deck</span>
-				<h1 class="detail-name">Deck Préconstruit NCE<br>Starter Edition</h1>
-				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
-				<p class="detail-price">18,00 €</p>
-				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
-				<div class="detail-divider"></div>
-				<p class="detail-section-title">Contenu du deck</p>
-				<div class="detail-contents">
-					<div class="detail-content-row"><span></span><span>40 cartes jouables</span></div>
-					<div class="detail-content-row"><span></span><span>Livret de règles officiel</span></div>
-					<div class="detail-content-row"><span></span><span>Prêt à jouer dès l'ouverture</span></div>
-					<div class="detail-content-row"><span></span><span>Idéal pour débuter</span></div>
-				</div>
-				<div class="detail-divider"></div>
-				<p class="detail-desc">
-					Le Deck Préconstruit Starter Edition est conçu pour les nouveaux joueurs qui souhaitent
-					découvrir le jeu StarLight sans se soucier de la construction de deck.
-					Entièrement équilibré et prêt à jouer, il inclut un livret de règles complet.
-				</p>
-				<div class="detail-cta">
-					<button class="btn-detail-preorder" data-name="Deck Préconstruit NCE" data-tag="Deck"
-						data-price="18.00">Précommander</button>
-					<button class="btn-detail-wishlist">♡</button>
-				</div>
-				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
-					sortie.</p>
+			<div class="rarity-item ri-R">
+				<p class="rarity-code">R — Rare</p>
+				<p class="rarity-name">Rare</p>
+				<p class="rarity-desc">Au moins une carte rare est garantie par booster. Elles apportent des capacités uniques et un artwork distinctif.</p>
 			</div>
-		</div>
-		<div class="detail-related">
-			<h3>Vous aimerez aussi</h3>
-			<div class="related-grid">
-				<div class="related-card" data-id="booster">
-					<div class="related-card-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Booster NCE</p>
-						<p class="related-card-price">5,00 €</p>
-					</div>
-				</div>
-				<div class="related-card" data-id="display">
-					<div class="related-card-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Display Box NCE</p>
-						<p class="related-card-price">55,00 €</p>
-					</div>
-				</div>
-				<div class="related-card" data-id="bundle">
-					<div class="related-card-img"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Coffret Collector NCE</p>
-						<p class="related-card-price">22,00 €</p>
-					</div>
-				</div>
+			<div class="rarity-item ri-P">
+				<p class="rarity-code">P — Parallèle</p>
+				<p class="rarity-name">Parallèle</p>
+				<p class="rarity-desc">Les cartes Parallèle brillent d'un éclat unique. Très recherchées des collectionneurs pour leur finition spéciale.</p>
+			</div>
+			<div class="rarity-item ri-G">
+				<p class="rarity-code">G — Gold</p>
+				<p class="rarity-name">Gold</p>
+				<p class="rarity-desc">Rareté ultime. Chaque carte Gold est un trésor à part entière — puissante, rare, et d'une beauté inégalée.</p>
 			</div>
 		</div>
 	</div>
 
-	<!-- BUNDLE -->
-	<div class="product-detail" id="detail-bundle">
-		<button class="detail-back" onclick="showList()">← Tous les produits</button>
-		<div class="detail-hero">
-			<div class="detail-img-wrap">
-				<div class="detail-img-main"><img src="./img/mockupcards2.png" alt="Bundle NCE" /></div>
-				<div class="detail-thumbs">
-					<div class="detail-thumb active">✦</div>
-					<div class="detail-thumb">✦</div>
-					<div class="detail-thumb">✦</div>
-				</div>
-			</div>
-			<div class="detail-info">
-				<span class="detail-tag">Bundle</span>
-				<h1 class="detail-name">Coffret Collector NCE<br>Deluxe Edition</h1>
-				<p class="detail-edition">Set #1 · StarLight CO. · NCE – FR</p>
-				<p class="detail-price">22,00 €</p>
-				<p class="detail-date">📅 Sortie estimée : 23 Août 2026</p>
-				<div class="detail-divider"></div>
-				<p class="detail-section-title">Contenu du coffret</p>
-				<div class="detail-contents">
-					<div class="detail-content-row"><span></span><span>3 boosters NCE</span></div>
-					<div class="detail-content-row"><span></span><span>1 carte exclusive collector</span></div>
-					<div class="detail-content-row"><span></span><span>Boîte collector numérotée</span></div>
-					<div class="detail-content-row"><span></span><span>Édition limitée</span></div>
-				</div>
-				<div class="detail-divider"></div>
-				<p class="detail-desc">
-					Le Coffret Collector Deluxe Edition est une édition limitée incluant 3 boosters et une
-					carte exclusive introuvable ailleurs. Chaque coffret est numéroté et livré dans un
-					emballage premium. Idéal comme cadeau ou pour les collectionneurs passionnés.
-				</p>
-				<div class="detail-cta">
-					<button class="btn-detail-preorder" data-name="Coffret Collector NCE" data-tag="Bundle"
-						data-price="22.00">Précommander</button>
-					<button class="btn-detail-wishlist">♡</button>
-				</div>
-				<p class="preorder-note" style="margin-top:12px;">Aucun débit immédiat — vous serez prélevé à la date de
-					sortie.</p>
-			</div>
+	<!-- ========================= -->
+	<!-- SOCIAL STRIP              -->
+	<!-- ========================= -->
+
+	<div class="social-strip">
+		<div class="social-strip-text">
+			<p class="social-strip-title">Rejoins la communauté</p>
+			<p class="social-strip-sub">Suivez-nous pour les dernières nouvelles, les previews de cartes et les événements.</p>
 		</div>
-		<div class="detail-related">
-			<h3>Vous aimerez aussi</h3>
-			<div class="related-grid">
-				<div class="related-card" data-id="booster">
-					<div class="related-card-img"><img src="./img/mockupcards.png" alt="Booster NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Booster NCE</p>
-						<p class="related-card-price">5,00 €</p>
-					</div>
-				</div>
-				<div class="related-card" data-id="display">
-					<div class="related-card-img"><img src="./img/mockup.png" alt="Display Box NCE" /></div>
-					<div class="related-card-body">
-						<p class="related-card-name">Display Box NCE</p>
-						<p class="related-card-price">55,00 €</p>
-					</div>
-				</div>
-				<div class="related-card" data-id="deck">
-					<div class="related-card-img">✦</div>
-					<div class="related-card-body">
-						<p class="related-card-name">Deck Préconstruit NCE</p>
-						<p class="related-card-price">18,00 €</p>
-					</div>
-				</div>
-			</div>
+		<div class="social-strip-links">
+			<a href="https://www.instagram.com/starlight.tcg_" target="_blank" rel="noopener" class="social-link">
+				<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+				Instagram
+			</a>
+			<a href="https://www.tiktok.com/@starlight.tcg_" target="_blank" rel="noopener" class="social-link">
+				<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+				TikTok
+			</a>
 		</div>
 	</div>
 
-	<!-- ======================================= -->
-	<!-- PANNEAU PRÉCOMMANDE                     -->
-	<!-- ======================================= -->
+	<!-- ========================= -->
+	<!-- FOOTER                    -->
+	<!-- ========================= -->
+
+	<footer class="site-footer">
+		<img class="footer-logo" src="./img/star2.png" alt="StarLight TCG" />
+		<div class="footer-social">
+			<a href="https://www.instagram.com/starlight.tcg_" target="_blank" rel="noopener" title="Instagram">IG</a>
+			<a href="https://www.tiktok.com/@starlight.tcg_" target="_blank" rel="noopener" title="TikTok">TK</a>
+		</div>
+		<div class="footer-links">
+			<a href="index.html">Accueil</a>
+			<a href="products.html">Produits</a>
+			<a href="404.html">CardList</a>
+		</div>
+		<p class="footer-copy">TM &amp; © StarLight CO., LTD. All Rights Reserved<br>New Collection Edition · Set #1 · FR · starlight.tcg_</p>
+	</footer>
+
+	<!-- ========================= -->
+	<!-- PANNEAU PRÉCOMMANDE       -->
+	<!-- ========================= -->
 
 	<div class="preorder-overlay" id="preorderOverlay"></div>
 
@@ -467,7 +1190,6 @@
 			<div class="preorder-progress-bar" id="progressBar"></div>
 		</div>
 
-		<!-- STEP 1 -->
 		<div class="preorder-step active" id="step1">
 			<div class="preorder-product-recap">
 				<span class="product-tag" id="recapTag">Booster</span>
@@ -479,10 +1201,9 @@
 				<span class="qty-value" id="qtyValue">1</span>
 				<button class="qty-btn" id="qtyPlus">+</button>
 			</div>
-			<p class="preorder-note" style="text-align:center;">Livraison estimée : <strong>23 Août 2026</strong></p>
+			<p class="preorder-note" style="text-align:center;">Livraison estimée : <strong style="color:var(--text)">23 Août 2026</strong></p>
 		</div>
 
-		<!-- STEP 2 -->
 		<div class="preorder-step" id="step2">
 			<div class="preorder-summary-lines" id="summaryLines"></div>
 			<div class="preorder-summary-total">
@@ -492,7 +1213,6 @@
 			<p class="preorder-note">Prix définitif confirmé à la sortie du produit.</p>
 		</div>
 
-		<!-- STEP 3 -->
 		<div class="preorder-step" id="step3">
 			<div class="preorder-form">
 				<div class="form-row">
@@ -509,32 +1229,22 @@
 			</div>
 		</div>
 
-		<!-- STEP 4 -->
 		<div class="preorder-step" id="step4">
 			<div class="payment-options">
 				<label class="payment-option">
 					<input type="radio" name="payment" value="card" checked />
 					<span class="payment-icon">💳</span>
-					<span class="payment-label">
-						Carte bancaire
-						<small>Visa, Mastercard, CB</small>
-					</span>
+					<span class="payment-label">Carte bancaire<small>Visa, Mastercard, CB</small></span>
 				</label>
 				<label class="payment-option">
 					<input type="radio" name="payment" value="paypal" />
 					<span class="payment-icon">🅿</span>
-					<span class="payment-label">
-						PayPal
-						<small>Paiement sécurisé via PayPal</small>
-					</span>
+					<span class="payment-label">PayPal<small>Paiement sécurisé via PayPal</small></span>
 				</label>
 				<label class="payment-option">
 					<input type="radio" name="payment" value="virement" />
 					<span class="payment-icon">🏦</span>
-					<span class="payment-label">
-						Virement bancaire
-						<small>Délai de traitement 2–3 jours</small>
-					</span>
+					<span class="payment-label">Virement bancaire<small>Délai de traitement 2–3 jours</small></span>
 				</label>
 			</div>
 			<p class="preorder-note">Aucun débit immédiat — vous serez prélevé à la date de sortie du produit.</p>
@@ -544,8 +1254,182 @@
 			<button class="preorder-btn-back" id="btnBack">← Retour</button>
 			<button class="preorder-btn-next" id="btnNext">Continuer →</button>
 		</div>
-
 	</div>
-</body>
 
+	<!-- ========================= -->
+	<!-- SCRIPTS                   -->
+	<!-- ========================= -->
+
+	<script>
+		// MENU
+		const menuBtn = document.getElementById("menuBtn")
+		const menuOverlay = document.getElementById("menuOverlay")
+		const menuOverlayBg = document.getElementById("menuOverlayBg")
+		if (menuBtn && menuOverlay) menuBtn.addEventListener("click", () => menuOverlay.classList.add("open"))
+		if (menuOverlayBg && menuOverlay) menuOverlayBg.addEventListener("click", () => menuOverlay.classList.remove("open"))
+
+		// HERO CAROUSEL
+		const adTrack = document.getElementById("adTrack")
+		const heroDots = document.querySelectorAll(".hero-dot")
+		let adIndex = 0
+		let adInterval
+
+		function goToSlide(n) {
+			adIndex = n
+			adTrack.style.transform = `translateX(-${adIndex * 100}%)`
+			heroDots.forEach((d, i) => d.classList.toggle("active", i === adIndex))
+		}
+
+		heroDots.forEach(dot => {
+			dot.addEventListener("click", () => {
+				clearInterval(adInterval)
+				goToSlide(parseInt(dot.dataset.index))
+				adInterval = setInterval(() => goToSlide((adIndex + 1) % heroDots.length), 5000)
+			})
+		})
+
+		adInterval = setInterval(() => goToSlide((adIndex + 1) % heroDots.length), 5000)
+
+		// CARD CAROUSEL
+		const carousel = document.getElementById("carousel")
+		if (carousel) {
+			let order = ["left", "center", "right"]
+			carousel.addEventListener("click", rotate)
+			function rotate() {
+				const cards = document.querySelectorAll(".card")
+				const currentCenterIndex = order.indexOf("center")
+				cards[currentCenterIndex].classList.add("flipped")
+				order.push(order.shift())
+				cards.forEach((card, i) => {
+					card.classList.remove("left", "center", "right")
+					card.classList.add(order[i])
+				})
+				const newCenterIndex = order.indexOf("center")
+				setTimeout(() => cards[newCenterIndex].classList.remove("flipped"), 400)
+			}
+		}
+
+		// COUNTDOWN
+		function updateCountdown() {
+			const target = new Date("2026-08-23T00:00:00")
+			const now = new Date()
+			const diff = target - now
+			if (diff <= 0) {
+				document.getElementById("cdDays").textContent = "00"
+				document.getElementById("cdHours").textContent = "00"
+				document.getElementById("cdMins").textContent = "00"
+				document.getElementById("cdSecs").textContent = "00"
+				return
+			}
+			const days  = Math.floor(diff / 86400000)
+			const hours = Math.floor((diff % 86400000) / 3600000)
+			const mins  = Math.floor((diff % 3600000) / 60000)
+			const secs  = Math.floor((diff % 60000) / 1000)
+			document.getElementById("cdDays").textContent  = String(days).padStart(2, "0")
+			document.getElementById("cdHours").textContent = String(hours).padStart(2, "0")
+			document.getElementById("cdMins").textContent  = String(mins).padStart(2, "0")
+			document.getElementById("cdSecs").textContent  = String(secs).padStart(2, "0")
+		}
+		updateCountdown()
+		setInterval(updateCountdown, 1000)
+
+		// PREORDER PANEL
+		const preorderPanel   = document.getElementById("preorderPanel")
+		const preorderOverlay = document.getElementById("preorderOverlay")
+		const preorderClose   = document.getElementById("preorderClose")
+		const btnNext         = document.getElementById("btnNext")
+		const btnBack         = document.getElementById("btnBack")
+		const progressBar     = document.getElementById("progressBar")
+		const stepLabelEl     = document.getElementById("stepLabel")
+		const panelTitleEl    = document.getElementById("panelTitle")
+
+		if (preorderPanel && btnNext && btnBack) {
+			const STEPS = [
+				{ label: "Étape 1 sur 4", title: "Choisir la quantité",  next: "Continuer →" },
+				{ label: "Étape 2 sur 4", title: "Résumé de commande",   next: "Continuer →" },
+				{ label: "Étape 3 sur 4", title: "Adresse de livraison", next: "Continuer →" },
+				{ label: "Étape 4 sur 4", title: "Moyen de paiement",    next: "Confirmer la précommande ✦" },
+			]
+			let currentStep = 1
+			let currentProduct = { name: "Booster NCE", tag: "Booster", price: 5 }
+			let qty = 1
+
+			document.querySelectorAll(".btn-preorder").forEach(btn => {
+				btn.addEventListener("click", e => {
+					e.preventDefault()
+					currentProduct = { name: btn.dataset.name || "Produit", tag: btn.dataset.tag || "Produit", price: parseFloat(btn.dataset.price) || 0 }
+					qty = 1
+					document.getElementById("qtyValue").textContent = qty
+					document.getElementById("recapTag").textContent  = currentProduct.tag
+					document.getElementById("recapName").textContent = currentProduct.name
+					const rp = document.getElementById("recapPrice")
+					if (rp) rp.textContent = currentProduct.price.toFixed(2).replace(".", ",") + " €"
+					goToStep(1)
+					preorderPanel.classList.add("open")
+					preorderOverlay.classList.add("open")
+					document.body.style.overflow = "hidden"
+				})
+			})
+
+			function closePreorder() {
+				preorderPanel.classList.remove("open")
+				preorderOverlay.classList.remove("open")
+				document.body.style.overflow = ""
+			}
+
+			if (preorderClose)   preorderClose.addEventListener("click", closePreorder)
+			if (preorderOverlay) preorderOverlay.addEventListener("click", closePreorder)
+
+			document.getElementById("qtyMinus").addEventListener("click", () => {
+				if (qty > 1) { qty--; document.getElementById("qtyValue").textContent = qty }
+			})
+			document.getElementById("qtyPlus").addEventListener("click", () => {
+				if (qty < 99) { qty++; document.getElementById("qtyValue").textContent = qty }
+			})
+
+			btnNext.addEventListener("click", () => {
+				if (currentStep < 4) {
+					goToStep(currentStep + 1)
+				} else {
+					btnNext.textContent = "✔ Précommande enregistrée !"
+					btnNext.classList.add("success")
+					btnNext.disabled = true
+					setTimeout(closePreorder, 2200)
+					setTimeout(() => { btnNext.textContent = STEPS[3].next; btnNext.classList.remove("success"); btnNext.disabled = false }, 2500)
+				}
+			})
+
+			btnBack.addEventListener("click", () => { if (currentStep > 1) goToStep(currentStep - 1) })
+
+			function goToStep(n) {
+				document.getElementById("step" + currentStep).classList.remove("active")
+				currentStep = n
+				document.getElementById("step" + currentStep).classList.add("active")
+				const s = STEPS[n - 1]
+				stepLabelEl.textContent  = s.label
+				panelTitleEl.textContent = s.title
+				btnNext.textContent      = s.next
+				btnNext.classList.remove("success")
+				progressBar.style.width = (n / 4 * 100) + "%"
+				btnBack.style.display   = n === 1 ? "none" : "inline-block"
+				if (n === 2) buildSummary()
+				preorderPanel.scrollTop = 0
+			}
+
+			function buildSummary() {
+				const lines = document.getElementById("summaryLines")
+				const total = document.getElementById("summaryTotal")
+				const t = (currentProduct.price * qty).toFixed(2).replace(".", ",")
+				lines.innerHTML = `
+					<div class="summary-line"><span>${currentProduct.name}</span><span>${currentProduct.price.toFixed(2).replace(".", ",")} €</span></div>
+					<div class="summary-line"><span>Quantité</span><span>× ${qty}</span></div>
+					<div class="summary-line"><span>Livraison</span><span>À confirmer</span></div>`
+				total.textContent = t + " €"
+			}
+
+			btnBack.style.display = "none"
+		}
+	</script>
+
+</body>
 </html>
