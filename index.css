@@ -265,7 +265,7 @@ h2 {
 .card-front img,
 .card-back img {
     width: 100%;
-    border-radius: 6px;
+    border-radius: 11px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
