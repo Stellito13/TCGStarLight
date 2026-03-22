@@ -165,3 +165,20 @@ if (preorderPanel && btnNext && btnBack) {
 
     btnBack.style.display = "none"
 }
+/* ========================= */
+/* STARS BACKGROUND          */
+/* ========================= */
+
+;(function () {
+    const bg = document.createElement("div")
+    bg.className = "stars-bg"
+    bg.setAttribute("aria-hidden", "true")
+    for (let i = 0; i < 12; i++) {
+        const s = document.createElement("span")
+        s.className = "star"
+        s.textContent = "✦"
+        bg.appendChild(s)
+    }
+    // Insert as first child of body so it sits behind everything
+    document.body.insertBefore(bg, document.body.firstChild)
+})()

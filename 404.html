@@ -23,33 +23,7 @@
             overflow: hidden;
         }
 
-        /* ✦ particules flottantes */
-        .stars-bg {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            opacity: 0;
-            animation: floatStar 7s ease-in-out infinite;
-            color: var(--gold);
-            font-size: 1rem;
-        }
-        .star:nth-child(1)  { left: 6%;  top: 14%; animation-delay: 0s;    font-size: 1.4rem; }
-        .star:nth-child(2)  { left: 18%; top: 68%; animation-delay: 1.1s;  font-size: 0.7rem; }
-        .star:nth-child(3)  { left: 33%; top: 22%; animation-delay: 1.8s;  font-size: 0.9rem; }
-        .star:nth-child(4)  { left: 54%; top: 78%; animation-delay: 0.4s;  font-size: 1.2rem; }
-        .star:nth-child(5)  { left: 72%; top: 11%; animation-delay: 2.3s;  font-size: 0.65rem;}
-        .star:nth-child(6)  { left: 84%; top: 52%; animation-delay: 0.7s;  font-size: 1.1rem; }
-        .star:nth-child(7)  { left: 91%; top: 28%; animation-delay: 2.7s;  font-size: 0.8rem; }
-        .star:nth-child(8)  { left: 47%; top: 8%;  animation-delay: 1.5s;  font-size: 0.6rem; }
-        .star:nth-child(9)  { left: 12%; top: 42%; animation-delay: 3.1s;  font-size: 1.3rem; }
-        .star:nth-child(10) { left: 63%; top: 62%; animation-delay: 0.2s;  font-size: 0.75rem;}
-
-        @keyframes floatStar {
-            0%   { opacity: 0;    transform: translateY(0) rotate(0deg); }
+        
             20%  { opacity: 0.25; }
             50%  { opacity: 0.12; transform: translateY(-20px) rotate(22deg); }
             80%  { opacity: 0.25; }
@@ -276,21 +250,7 @@
     </div>
 
     <main class="page-404">
-
-        <div class="stars-bg" aria-hidden="true">
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-            <span class="star">✦</span>
-        </div>
-
-        <h1 class="error-number">404</h1>
+<h1 class="error-number">404</h1>
 
         <div class="lost-card">
             <img src="./cards/Arriere.png" alt="Carte perdue" />
@@ -318,13 +278,6 @@
 
     </main>
 
-    <script>
-        const menuBtn = document.getElementById("menuBtn")
-        const menuOverlay = document.getElementById("menuOverlay")
-        const menuOverlayBg = document.getElementById("menuOverlayBg")
-        if (menuBtn && menuOverlay) menuBtn.addEventListener("click", () => menuOverlay.classList.add("open"))
-        if (menuOverlayBg && menuOverlay) menuOverlayBg.addEventListener("click", () => menuOverlay.classList.remove("open"))
-    </script>
-
+    <script src="index.js" defer></script>
 </body>
 </html>

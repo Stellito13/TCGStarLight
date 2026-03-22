@@ -258,4 +258,152 @@
         gap: 14px;
     }
     .filters { gap: 7px; }
+}/* =========================
+   SET SECTIONS
+   ========================= */
+
+/* Wrapper principal — remplace cards-grid directement */
+#cardsGrid {
+    padding: 0 5% 80px;
+    display: block; /* override grid — les set-grid gèrent le layout */
+}
+
+.set-section {
+    margin-bottom: 56px;
+}
+
+/* Header de set */
+.set-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 14px;
+    flex-wrap: wrap;
+}
+
+.set-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.set-number {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.set-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.set-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Statut badge */
+.set-status {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+}
+
+.set-status.available {
+    background: rgba(42,157,92,0.15);
+    color: #2a9d5c;
+    border: 1px solid rgba(42,157,92,0.3);
+}
+
+.set-status.upcoming {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.25);
+}
+
+.set-status.coming-soon {
+    background: rgba(90,85,80,0.2);
+    color: var(--text-muted);
+    border: 1px solid var(--border-2);
+}
+
+.set-count {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Ligne séparatrice gold → transparent */
+.set-rule {
+    height: 1px;
+    background: linear-gradient(to right, var(--gold-dark), var(--border), transparent);
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+/* Grille de cartes à l'intérieur d'un set */
+.set-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+/* Coming soon placeholder */
+.set-coming-soon {
+    border: 1px dashed var(--border-2);
+    border-radius: var(--radius);
+    padding: 48px 24px;
+    text-align: center;
+    background: rgba(255,255,255,0.015);
+}
+
+.coming-soon-icon {
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    opacity: 0.4;
+}
+
+.coming-soon-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin: 0 0 6px;
+}
+
+.coming-soon-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 0;
+    opacity: 0.7;
+}
+
+/* Card subtitle inline */
+.card-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-style: normal;
+}
+
+@media (max-width: 600px) {
+    .set-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 14px;
+    }
+    .set-title { font-size: 1.2rem; }
+    .set-header { align-items: flex-start; flex-direction: column; gap: 10px; }
 }

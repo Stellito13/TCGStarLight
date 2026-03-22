@@ -187,150 +187,288 @@
 		}
 		.section-header a:hover { color: var(--gold); }
 
-		/* CARD CAROUSEL SECTION */
 		/* =============================== */
-		/* CARD CAROUSEL REDESIGN          */
+		/* CARD SHOWCASE SECTION           */
 		/* =============================== */
 
-		.cards-section-wrapper {
-			margin: 0 5%;
-			border-radius: var(--radius-lg);
-			overflow: hidden;
-			background: var(--surface);
-			border: 1px solid var(--border);
+		.cards-showcase {
 			position: relative;
+			margin: 0;
+			overflow: hidden;
+			/* Gradient borders top & bottom to blend with page */
+			border-top: 1px solid var(--border);
+			border-bottom: 1px solid var(--border);
 		}
 
-		/* Subtle radial glow behind the center card */
-		.cards-section-wrapper::before {
+		/* Background — subtle dot grid pattern */
+		.cards-showcase::before {
 			content: "";
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 340px;
-			height: 340px;
-			background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+			inset: 0;
+			background-image:
+				radial-gradient(circle at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+				radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+			background-size: 100% 100%, 28px 28px;
 			pointer-events: none;
 			z-index: 0;
 		}
 
-		.cards-section {
+		.cards-showcase-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
+
+		@media (min-width: 768px) {
+			.cards-showcase-inner {
+				grid-template-columns: 1fr 1fr;
+				min-height: 480px;
+			}
+		}
+
+		/* LEFT SIDE — carousel */
+		.showcase-carousel-col {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			padding: 0 0 28px;
-			overflow: hidden;
+			justify-content: center;
+			padding: 40px 0 32px;
 			position: relative;
-			z-index: 1;
 		}
 
-		/* Top label inside the panel */
-		.carousel-top-label {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 18px 22px 0;
+		@media (min-width: 768px) {
+			.showcase-carousel-col {
+				border-right: 1px solid var(--border);
+				padding: 48px 0 40px;
+			}
+		}
+
+		/* 3D carousel in new context */
+		.cards-showcase .carousel {
 			width: 100%;
-			box-sizing: border-box;
-		}
-
-		.carousel-top-tag {
-			font-size: 0.65rem;
-			font-weight: 700;
-			letter-spacing: 0.12em;
-			text-transform: uppercase;
-			color: var(--text-muted);
-		}
-
-		.carousel-top-hint {
-			font-size: 0.68rem;
-			color: var(--text-muted);
-			letter-spacing: 0.06em;
+			height: 52vw;
+			max-height: 380px;
+			min-height: 200px;
+			perspective: 1200px;
 			display: flex;
-			align-items: center;
-			gap: 6px;
+			justify-content: center;
+			position: relative;
+			cursor: pointer;
 		}
 
-		.carousel-top-hint::before {
-			content: "↺";
-			font-size: 0.9rem;
-			color: var(--gold);
-		}
-
-		/* Override base carousel from index.css for this context */
-		.cards-section-wrapper .carousel {
-			height: 46vw;
-			max-height: 400px;
-			min-height: 220px;
-		}
-
-		/* Bottom info strip — name + rarity of center card */
-		.carousel-info-strip {
+		/* Navigation arrows */
+		.carousel-arrow {
+			position: absolute;
+			bottom: 0;
+			width: 44px;
+			height: 44px;
+			border: 1px solid var(--border-2);
+			border-radius: 50%;
+			background: var(--surface);
+			color: var(--text-2);
+			font-size: 1rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 12px;
-			padding: 0 22px;
-			width: 100%;
-			box-sizing: border-box;
-			margin-top: 4px;
-			min-height: 32px;
+			cursor: pointer;
+			transition: border-color var(--transition), color var(--transition), background var(--transition);
+			z-index: 10;
+		}
+		.carousel-arrow:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.06); }
+		.carousel-arrow-prev { left: calc(50% - 56px); }
+		.carousel-arrow-next { left: calc(50% + 12px); }
+
+		/* Click hint — fade out after first interaction */
+		.carousel-click-hint {
+			font-size: 0.62rem;
+			color: var(--text-muted);
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin-top: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			opacity: 1;
+			transition: opacity 0.5s ease;
+		}
+		.carousel-click-hint.hidden { opacity: 0; }
+		.carousel-click-hint::before { content: "↺"; color: var(--gold); font-size: 0.8rem; }
+
+		/* RIGHT SIDE — card info panel */
+		.showcase-info-col {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 32px 6% 32px;
+			gap: 20px;
+			border-top: 1px solid var(--border);
 		}
 
-		.carousel-card-name {
+		@media (min-width: 768px) {
+			.showcase-info-col {
+				padding: 48px 7%;
+				border-top: none;
+			}
+		}
+
+		.showcase-eyebrow {
+			font-size: 0.62rem;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--text-muted);
+			margin: 0;
+		}
+
+		.showcase-card-header {
+			display: flex;
+			align-items: baseline;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.showcase-card-title {
 			font-family: var(--font-display);
-			font-size: 1rem;
+			font-size: clamp(1.6rem, 4vw, 2.4rem);
 			color: var(--text);
+			line-height: 1.1;
+			margin: 0;
 			transition: opacity 0.3s ease;
 		}
 
-		.carousel-card-rarity {
+		.showcase-card-subtitle {
+			font-size: 0.78rem;
+			color: var(--text-muted);
+			letter-spacing: 0.05em;
+			margin: 0;
+			transition: opacity 0.3s ease;
+			white-space: nowrap;
+		}
+
+		.showcase-rarity-row {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.showcase-rarity-badge {
 			font-size: 0.65rem;
 			font-weight: 700;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
-			padding: 2px 8px;
+			padding: 4px 12px;
 			border-radius: 2px;
-			transition: opacity 0.3s ease;
+			transition: background 0.3s, color 0.3s, border-color 0.3s;
 		}
+		.showcase-rarity-badge.r-C { background: rgba(110,110,110,0.15); color: var(--common);   border: 1px solid rgba(110,110,110,0.3); }
+		.showcase-rarity-badge.r-R { background: rgba(74,127,193,0.15);  color: var(--rare);     border: 1px solid rgba(74,127,193,0.3); }
+		.showcase-rarity-badge.r-P { background: rgba(42,173,189,0.15);  color: var(--parallel); border: 1px solid rgba(42,173,189,0.3); }
+		.showcase-rarity-badge.r-G { background: rgba(201,168,76,0.15);  color: var(--gold);     border: 1px solid rgba(201,168,76,0.3); }
 
-		.carousel-card-rarity.r-C { background: rgba(110,110,110,0.2); color: var(--common); border: 1px solid rgba(110,110,110,0.3); }
-		.carousel-card-rarity.r-R { background: rgba(74,127,193,0.2);  color: var(--rare);   border: 1px solid rgba(74,127,193,0.3); }
-		.carousel-card-rarity.r-P { background: rgba(42,173,189,0.2);  color: var(--parallel); border: 1px solid rgba(42,173,189,0.3); }
-		.carousel-card-rarity.r-G { background: rgba(201,168,76,0.2);  color: var(--gold);   border: 1px solid rgba(201,168,76,0.3); }
-
-		/* Bottom CTA */
-		.carousel-cta {
-			display: flex;
-			justify-content: center;
-			margin-top: 16px;
-		}
-
-		.btn-carousel-cta {
-			padding: 10px 24px;
-			background: transparent;
-			color: var(--text-2);
-			border: 1px solid var(--border-2);
-			border-radius: var(--radius-sm);
-			font-family: var(--font-body);
-			font-size: 0.78rem;
-			font-weight: 600;
+		.showcase-set-label {
+			font-size: 0.72rem;
+			color: var(--text-muted);
 			letter-spacing: 0.06em;
-			text-transform: uppercase;
-			text-decoration: none;
-			cursor: pointer;
-			transition: border-color var(--transition), color var(--transition);
 		}
-		.btn-carousel-cta:hover { border-color: var(--gold); color: var(--gold); }
 
-		/* Divider lines left/right of carousel */
-		.carousel-divider {
-			width: 100%;
+		/* Stat bars */
+		.showcase-stats {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.stat-row {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.stat-label {
+			font-size: 0.68rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--text-muted);
+			width: 56px;
+			flex-shrink: 0;
+		}
+
+		.stat-bar-track {
+			flex: 1;
+			height: 3px;
+			background: var(--border);
+			border-radius: 2px;
+			overflow: hidden;
+		}
+
+		.stat-bar-fill {
+			height: 100%;
+			border-radius: 2px;
+			background: var(--gold);
+			transform-origin: left;
+			transform: scaleX(0);
+			transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+		}
+
+		.stat-bar-fill.animate { transform: scaleX(1); }
+
+		.stat-value {
+			font-size: 0.72rem;
+			font-weight: 700;
+			color: var(--text-2);
+			width: 32px;
+			text-align: right;
+			flex-shrink: 0;
+		}
+
+		/* Divider inside info panel */
+		.showcase-divider {
 			height: 1px;
 			background: var(--border);
 			margin: 0;
 		}
+
+		/* Bottom row — card count + CTA */
+		.showcase-bottom {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+
+		.showcase-count {
+			font-size: 0.75rem;
+			color: var(--text-muted);
+			letter-spacing: 0.05em;
+		}
+
+		.showcase-count strong {
+			font-family: var(--font-display);
+			font-size: 1.1rem;
+			color: var(--text);
+			margin-right: 4px;
+		}
+
+		.btn-showcase-cta {
+			padding: 11px 22px;
+			background: var(--gold);
+			color: #0d0d0d;
+			border: 1px solid var(--gold);
+			border-radius: var(--radius-sm);
+			font-family: var(--font-body);
+			font-size: 0.78rem;
+			font-weight: 800;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: background var(--transition);
+			white-space: nowrap;
+		}
+		.btn-showcase-cta:hover { background: var(--gold-light); border-color: var(--gold-light); }
 
 		/* FEATURES STRIP */
 		.features-strip {
@@ -978,62 +1116,73 @@
 	</div>
 
 	<!-- ========================= -->
-	<!-- CARD CAROUSEL PREVIEW     -->
+	<!-- CARD SHOWCASE             -->
 	<!-- ========================= -->
 
-	<div class="section-header">
-		<h2>Les Cartes</h2>
-		<a href="404.html">Voir toutes les cartes →</a>
-	</div>
+	<section class="cards-showcase">
+		<div class="cards-showcase-inner">
 
-	<div class="cards-section-wrapper">
-		<div class="cards-section">
-
-			<!-- Top bar -->
-			<div class="carousel-top-label">
-				<span class="carousel-top-tag">✦ New Collection Edition — Set #1</span>
-				<span class="carousel-top-hint">Cliquer pour retourner</span>
-			</div>
-
-			<div class="carousel-divider" style="margin-top:14px;"></div>
-
-			<!-- Carousel 3D -->
-			<div class="carousel" id="carousel">
-				<div class="card left" data-name="Nathan" data-rarity="R">
-					<div class="card-inner">
-						<div class="card-front"><img src="./cards/Rcarte2.png" alt="Carte R" /></div>
-						<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
+			<!-- COL GAUCHE : carousel 3D -->
+			<div class="showcase-carousel-col">
+				<div class="carousel" id="carousel">
+					<div class="card left" data-name="Nathan" data-rarity="R" data-subtitle="Original" data-hp="50" data-atk="20">
+						<div class="card-inner">
+							<div class="card-front"><img src="./cards/Rcarte2.png" alt="Carte R" /></div>
+							<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
+						</div>
+					</div>
+					<div class="card center" data-name="Nathan" data-rarity="C" data-subtitle="Original" data-hp="50" data-atk="20">
+						<div class="card-inner">
+							<div class="card-front"><img src="./cards/Ccarte1.png" alt="Carte C" /></div>
+							<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
+						</div>
+					</div>
+					<div class="card right" data-name="Nathan" data-rarity="P" data-subtitle="Original" data-hp="50" data-atk="20">
+						<div class="card-inner">
+							<div class="card-front"><img src="./cards/Pcarte3.png" alt="Carte P" /></div>
+							<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
+						</div>
 					</div>
 				</div>
-				<div class="card center" data-name="Nathan" data-rarity="C">
-					<div class="card-inner">
-						<div class="card-front"><img src="./cards/Ccarte1.png" alt="Carte C" /></div>
-						<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
-					</div>
-				</div>
-				<div class="card right" data-name="Nathan" data-rarity="P">
-					<div class="card-inner">
-						<div class="card-front"><img src="./cards/Pcarte3.png" alt="Carte P" /></div>
-						<div class="card-back"><img src="./cards/Arriere.png" alt="Dos de carte" /></div>
-					</div>
-				</div>
+
+				<button class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Précédent">←</button>
+				<button class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Suivant">→</button>
+				<p class="carousel-click-hint" id="carouselHint">Cliquer pour retourner</p>
 			</div>
 
-			<div class="carousel-divider"></div>
-
-			<!-- Info strip -->
-			<div class="carousel-info-strip">
-				<span class="carousel-card-name" id="carouselCardName">Nathan</span>
-				<span class="carousel-card-rarity r-C" id="carouselCardRarity">C — Commune</span>
-			</div>
-
-			<!-- CTA -->
-			<div class="carousel-cta">
-				<a href="404.html" class="btn-carousel-cta">Voir les 35 cartes →</a>
+			<!-- COL DROITE : infos carte -->
+			<div class="showcase-info-col">
+				<p class="showcase-eyebrow">✦ New Collection Edition · Set #1</p>
+				<div class="showcase-card-header">
+					<h2 class="showcase-card-title" id="showcaseCardName">Nathan</h2>
+					<p class="showcase-card-subtitle" id="showcaseCardSubtitle">Original</p>
+				</div>
+				<div class="showcase-rarity-row">
+					<span class="showcase-rarity-badge r-C" id="showcaseRarity">C — Commune</span>
+					<span class="showcase-set-label">NCE – FR</span>
+				</div>
+				<div class="showcase-divider"></div>
+				<div class="showcase-stats">
+					<div class="stat-row">
+						<span class="stat-label">HP</span>
+						<div class="stat-bar-track"><div class="stat-bar-fill" id="statHpBar"></div></div>
+						<span class="stat-value" id="statHpVal">50</span>
+					</div>
+					<div class="stat-row">
+						<span class="stat-label">ATK</span>
+						<div class="stat-bar-track"><div class="stat-bar-fill" id="statAtkBar"></div></div>
+						<span class="stat-value" id="statAtkVal">20</span>
+					</div>
+				</div>
+				<div class="showcase-divider"></div>
+				<div class="showcase-bottom">
+					<div class="showcase-count"><strong>35</strong> cartes dans la collection</div>
+					<a href="404.html" class="btn-showcase-cta">Voir toutes →</a>
+				</div>
 			</div>
 
 		</div>
-	</div>
+	</section>
 
 	<!-- ========================= -->
 	<!-- PRODUITS MINI GRID        -->
@@ -1261,6 +1410,20 @@
 	<!-- ========================= -->
 
 	<script>
+		// STARS BACKGROUND
+		;(function () {
+			const bg = document.createElement("div")
+			bg.className = "stars-bg"
+			bg.setAttribute("aria-hidden", "true")
+			for (let i = 0; i < 12; i++) {
+				const s = document.createElement("span")
+				s.className = "star"
+				s.textContent = "✦"
+				bg.appendChild(s)
+			}
+			document.body.insertBefore(bg, document.body.firstChild)
+		})()
+
 		// MENU
 		const menuBtn = document.getElementById("menuBtn")
 		const menuOverlay = document.getElementById("menuOverlay")
@@ -1290,23 +1453,101 @@
 
 		adInterval = setInterval(() => goToSlide((adIndex + 1) % heroDots.length), 5000)
 
-		// CARD CAROUSEL
+		// CARD SHOWCASE
 		const carousel = document.getElementById("carousel")
 		if (carousel) {
 			let order = ["left", "center", "right"]
-			carousel.addEventListener("click", rotate)
+			let hintDismissed = false
+
+			const rarityLabels = { C: "C — Commune", R: "R — Rare", P: "P — Parallèle", G: "G — Gold" }
+			const MAX_HP  = 100
+			const MAX_ATK = 60
+
+			function updateShowcase(animate) {
+				const cards = document.querySelectorAll(".card")
+				const centerIdx = order.indexOf("center")
+				const c = cards[centerIdx]
+				if (!c) return
+
+				const name     = c.dataset.name     || "—"
+				const subtitle = c.dataset.subtitle  || ""
+				const rarity   = c.dataset.rarity    || "C"
+				const hp       = parseInt(c.dataset.hp)  || 0
+				const atk      = parseInt(c.dataset.atk) || 0
+
+				// Text
+				const nameEl = document.getElementById("showcaseCardName")
+				const subEl  = document.getElementById("showcaseCardSubtitle")
+				const rarEl  = document.getElementById("showcaseRarity")
+				if (nameEl) { nameEl.style.opacity = 0; setTimeout(() => { nameEl.textContent = name;    nameEl.style.opacity = 1 }, 180) }
+				if (subEl)  { subEl.style.opacity  = 0; setTimeout(() => { subEl.textContent  = subtitle; subEl.style.opacity  = 1 }, 180) }
+				if (rarEl)  {
+					rarEl.style.opacity = 0
+					setTimeout(() => {
+						rarEl.textContent = rarityLabels[rarity] || rarity
+						rarEl.className = "showcase-rarity-badge r-" + rarity
+						rarEl.style.opacity = 1
+					}, 180)
+				}
+
+				// Stat bars
+				const hpBar  = document.getElementById("statHpBar")
+				const atkBar = document.getElementById("statAtkBar")
+				const hpVal  = document.getElementById("statHpVal")
+				const atkVal = document.getElementById("statAtkVal")
+
+				if (hpBar) {
+					hpBar.classList.remove("animate")
+					hpBar.style.width = (hp / MAX_HP * 100) + "%"
+					// Color based on rarity
+					const colors = { C: "var(--common)", R: "var(--rare)", P: "var(--parallel)", G: "var(--gold)" }
+					hpBar.style.background  = colors[rarity] || "var(--gold)"
+					atkBar.style.background = colors[rarity] || "var(--gold)"
+					void hpBar.offsetWidth // reflow
+					hpBar.classList.add("animate")
+				}
+				if (atkBar) {
+					atkBar.classList.remove("animate")
+					atkBar.style.width = (atk / MAX_ATK * 100) + "%"
+					void atkBar.offsetWidth
+					atkBar.classList.add("animate")
+				}
+				if (hpVal)  hpVal.textContent  = hp  + " HP"
+				if (atkVal) atkVal.textContent = atk + " ATK"
+			}
+
 			function rotate() {
 				const cards = document.querySelectorAll(".card")
-				const currentCenterIndex = order.indexOf("center")
-				cards[currentCenterIndex].classList.add("flipped")
+				const ci = order.indexOf("center")
+				cards[ci].classList.add("flipped")
 				order.push(order.shift())
 				cards.forEach((card, i) => {
 					card.classList.remove("left", "center", "right")
 					card.classList.add(order[i])
 				})
-				const newCenterIndex = order.indexOf("center")
-				setTimeout(() => cards[newCenterIndex].classList.remove("flipped"), 400)
+				const ni = order.indexOf("center")
+				setTimeout(() => {
+					cards[ni].classList.remove("flipped")
+					updateShowcase(true)
+				}, 400)
+
+				// Dismiss hint after first click
+				if (!hintDismissed) {
+					hintDismissed = true
+					const hint = document.getElementById("carouselHint")
+					if (hint) hint.classList.add("hidden")
+				}
 			}
+
+			carousel.addEventListener("click", rotate)
+
+			const prevBtn = document.getElementById("carouselPrev")
+			const nextBtn = document.getElementById("carouselNext")
+			if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); rotate() })
+			if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); rotate() })
+
+			// Init stat bars with animation on page load
+			setTimeout(() => updateShowcase(true), 300)
 		}
 
 		// COUNTDOWN
