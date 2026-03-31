@@ -236,6 +236,18 @@ const CARDS = [
         effect: "Enlève des HP à la carte active de l'adversaire",
         illustrator: "Stellito.rht"
     },
+    {
+        id: "C 0036", name: "Monster", subtitle: "Munch", rarity: "C", hp: 10, set: "NCE",
+        img: "./cards/Ccarte36.png", attack: "Ketchup", attackDmg: 10,
+        effect: "Enlève les dégats infliger à la cartes active pendant 1 tour",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "R 0037", name: "Monster", subtitle: "Munch", rarity: "R", hp: 20, set: "NCE",
+        img: "./cards/Rcarte37.png", attack: "Ketchup", attackDmg: 20,
+        effect: "Enlève les dégats infliger à la cartes active pendant 3 tours",
+        illustrator: "Stellito.rht"
+    }
 
 ];
 
