@@ -247,6 +247,18 @@ const CARDS = [
         img: "./cards/Rcarte37.png", attack: "Ketchup", attackDmg: 20,
         effect: "Enlève les dégats infliger à la cartes active pendant 3 tours",
         illustrator: "Stellito.rht"
+    },
+    {
+        id: "C 0038", name: "Schtroumpf", subtitle: "Bande", rarity: "C", hp: 20, set: "NCE",
+        img: "./cards/Ccarte38.png", attack: "Inconnu", attackDmg: 20,
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "R 0039", name: "Schtroumpf", subtitle: "Bande", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte39.png", attack: "Inconnu", attackDmg: 30,
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
     }
 
 ];

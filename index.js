@@ -1,72 +1,84 @@
 /* ========================= */
+/* STARS BACKGROUND          */
+/* ========================= */
+;(function () {
+    const bg = document.createElement("div")
+    bg.className = "stars-bg"
+    bg.setAttribute("aria-hidden", "true")
+    for (let i = 0; i < 12; i++) {
+        const s = document.createElement("span")
+        s.className = "star"
+        s.textContent = "✦"
+        bg.appendChild(s)
+    }
+    document.body.insertBefore(bg, document.body.firstChild)
+})()
+
+/* ========================= */
 /* MENU OVERLAY              */
 /* ========================= */
-
-const menuBtn       = document.getElementById("menuBtn")
-const menuOverlay   = document.getElementById("menuOverlay")
-const menuOverlayBg = document.getElementById("menuOverlayBg")
-
-if (menuBtn && menuOverlay) {
-    menuBtn.addEventListener("click", () => menuOverlay.classList.add("open"))
-}
-if (menuOverlayBg && menuOverlay) {
-    menuOverlayBg.addEventListener("click", () => menuOverlay.classList.remove("open"))
-}
+;(function () {
+    const menuBtn       = document.getElementById("menuBtn")
+    const menuOverlay   = document.getElementById("menuOverlay")
+    const menuOverlayBg = document.getElementById("menuOverlayBg")
+    if (menuBtn && menuOverlay)
+        menuBtn.addEventListener("click", () => menuOverlay.classList.add("open"))
+    if (menuOverlayBg && menuOverlay)
+        menuOverlayBg.addEventListener("click", () => menuOverlay.classList.remove("open"))
+})()
 
 /* ========================= */
 /* CAROUSEL PUB AUTO         */
 /* ========================= */
-
-const adTrack  = document.getElementById("adTrack")
-const adSlides = document.querySelectorAll(".ad-slide")
-
-if (adTrack && adSlides.length > 0) {
-    let adIndex = 0
-    function rotateAds() {
-        adIndex = (adIndex + 1) % adSlides.length
-        adTrack.style.transform = `translateX(-${adIndex * 100}%)`
+;(function () {
+    const adTrack  = document.getElementById("adTrack")
+    const adSlides = document.querySelectorAll(".ad-slide")
+    if (adTrack && adSlides.length > 0) {
+        let adIndex = 0
+        setInterval(() => {
+            adIndex = (adIndex + 1) % adSlides.length
+            adTrack.style.transform = `translateX(-${adIndex * 100}%)`
+        }, 4000)
     }
-    setInterval(rotateAds, 4000)
-}
+})()
 
 /* ========================= */
 /* CAROUSEL CARTES           */
 /* ========================= */
-
-const carousel = document.getElementById("carousel")
-
-if (carousel) {
+;(function () {
+    const carousel = document.getElementById("carousel")
+    if (!carousel) return
     let order = ["left", "center", "right"]
     carousel.addEventListener("click", rotate)
-
     function rotate() {
         const cards = document.querySelectorAll(".card")
-        const currentCenterIndex = order.indexOf("center")
-        cards[currentCenterIndex].classList.add("flipped")
+        const ci = order.indexOf("center")
+        cards[ci].classList.add("flipped")
         order.push(order.shift())
         cards.forEach((card, i) => {
             card.classList.remove("left", "center", "right")
             card.classList.add(order[i])
         })
-        const newCenterIndex = order.indexOf("center")
-        setTimeout(() => { cards[newCenterIndex].classList.remove("flipped") }, 400)
+        const ni = order.indexOf("center")
+        setTimeout(() => cards[ni].classList.remove("flipped"), 400)
     }
-}
+})()
 
 /* ========================= */
 /* PANNEAU PRÉCOMMANDE       */
+/* (partagé index + products)*/
 /* ========================= */
+;(function () {
+    const preorderPanel   = document.getElementById("preorderPanel")
+    const preorderOverlay = document.getElementById("preorderOverlay")
+    const preorderClose   = document.getElementById("preorderClose")
+    const btnNext         = document.getElementById("btnNext")
+    const btnBack         = document.getElementById("btnBack")
+    const progressBar     = document.getElementById("progressBar")
+    const stepLabelEl     = document.getElementById("stepLabel")
+    const panelTitleEl    = document.getElementById("panelTitle")
 
-const preorderPanel   = document.getElementById("preorderPanel")
-const preorderOverlay = document.getElementById("preorderOverlay")
-const preorderClose   = document.getElementById("preorderClose")
-const btnNext         = document.getElementById("btnNext")
-const btnBack         = document.getElementById("btnBack")
-const progressBar     = document.getElementById("progressBar")
-const stepLabelEl     = document.getElementById("stepLabel")
-const panelTitleEl    = document.getElementById("panelTitle")
-
-if (preorderPanel && btnNext && btnBack) {
+    if (!preorderPanel || !btnNext || !btnBack) return
 
     const STEPS = [
         { label: "Étape 1 sur 4", title: "Choisir la quantité",  next: "Continuer →" },
@@ -79,32 +91,38 @@ if (preorderPanel && btnNext && btnBack) {
     let currentProduct = { name: "", tag: "", price: 0 }
     let qty = 1
 
-    document.querySelectorAll(".btn-preorder").forEach(btn => {
-        btn.addEventListener("click", e => {
-            e.preventDefault()
-            currentProduct = {
-                name:  btn.dataset.name  || "Produit",
-                tag:   btn.dataset.tag   || "Produit",
-                price: parseFloat(btn.dataset.price) || 0
-            }
-            qty = 1
-            document.getElementById("qtyValue").textContent = qty
-            document.getElementById("recapTag").textContent  = currentProduct.tag
-            document.getElementById("recapName").textContent = currentProduct.name
-            const recapPrice = document.getElementById("recapPrice")
-            if (recapPrice) recapPrice.textContent = currentProduct.price.toFixed(2).replace(".", ",") + " €"
-            goToStep(1)
-            preorderPanel.classList.add("open")
-            preorderOverlay.classList.add("open")
-            document.body.style.overflow = "hidden"
-        })
-    })
+    // Exposer openPreorder globalement pour products.js
+    window.openPreorder = function(name, tag, price) {
+        currentProduct = { name, tag, price: parseFloat(price) }
+        qty = 1
+        document.getElementById("qtyValue").textContent = 1
+        document.getElementById("recapTag").textContent  = tag
+        document.getElementById("recapName").textContent = name
+        const recapPrice = document.getElementById("recapPrice")
+        if (recapPrice) recapPrice.textContent = parseFloat(price).toFixed(2).replace(".", ",") + " €"
+        goToStep(1)
+        preorderPanel.classList.add("open")
+        preorderOverlay.classList.add("open")
+        document.body.style.overflow = "hidden"
+    }
 
     function closePreorder() {
         preorderPanel.classList.remove("open")
         preorderOverlay.classList.remove("open")
         document.body.style.overflow = ""
     }
+
+    // Boutons .btn-preorder (page index)
+    document.querySelectorAll(".btn-preorder").forEach(btn => {
+        btn.addEventListener("click", e => {
+            e.preventDefault()
+            window.openPreorder(
+                btn.dataset.name  || "Produit",
+                btn.dataset.tag   || "Produit",
+                btn.dataset.price || "0"
+            )
+        })
+    })
 
     if (preorderClose)   preorderClose.addEventListener("click", closePreorder)
     if (preorderOverlay) preorderOverlay.addEventListener("click", closePreorder)
@@ -164,21 +182,4 @@ if (preorderPanel && btnNext && btnBack) {
     }
 
     btnBack.style.display = "none"
-}
-/* ========================= */
-/* STARS BACKGROUND          */
-/* ========================= */
-
-;(function () {
-    const bg = document.createElement("div")
-    bg.className = "stars-bg"
-    bg.setAttribute("aria-hidden", "true")
-    for (let i = 0; i < 12; i++) {
-        const s = document.createElement("span")
-        s.className = "star"
-        s.textContent = "✦"
-        bg.appendChild(s)
-    }
-    // Insert as first child of body so it sits behind everything
-    document.body.insertBefore(bg, document.body.firstChild)
 })()

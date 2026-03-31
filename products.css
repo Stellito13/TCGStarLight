@@ -366,7 +366,7 @@
     transition: border-color var(--transition), color var(--transition);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.btn-detail-wishlist:hover { border-color: #e44; color: #e44; }
+.btn-detail-wishlist:hover { border-color: #bf327a; color: #bf327a; }
 
 .preorder-note { font-size: 0.74rem; color: var(--text-muted); line-height: 1.6; margin: 10px 0 0; }
 
@@ -412,4 +412,57 @@
     .set-title  { font-size: 1.2rem; }
     .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .pc-name { font-size: 0.88rem; }
+}
+/* ── Override DA couleurs pour products.css ── */
+/* Les variables sont déjà dans index.css       */
+
+/* Tag couleur par type */
+.pc-tag[class*="Booster"],
+.detail-tag { background: var(--rare); color: #fff; }
+
+/* Hover card — glow bleu */
+@media (min-width: 600px) {
+    .product-card:hover {
+        border-color: rgba(42,124,219,0.5);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(42,124,219,0.2);
+    }
+}
+
+/* Prix en gold */
+.pc-price, .detail-price { color: var(--gold); }
+
+/* Bouton voir produit — bleu */
+.pc-btn:hover {
+    border-color: var(--rare);
+    color: var(--rare-light);
+    background: rgba(42,124,219,0.08);
+}
+
+/* Bouton précommander — bleu */
+.btn-detail-preorder {
+    background: var(--rare);
+    border-color: var(--rare);
+    color: #fff;
+}
+.btn-detail-preorder:hover {
+    background: var(--rare-light);
+    border-color: var(--rare-light);
+    color: #0e0e14;
+}
+
+/* Detail divider — gradient coloré */
+.detail-divider {
+    background: linear-gradient(90deg, var(--rare), var(--parallel), transparent);
+    opacity: 0.35;
+}
+
+/* Related card hover */
+.related-card:hover {
+    border-color: rgba(42,124,219,0.4);
+    box-shadow: 0 4px 20px rgba(42,124,219,0.1);
+}
+
+/* Set header — accent gold → rare */
+.set-rule {
+    background: linear-gradient(to right, var(--rare), var(--border), transparent);
 }

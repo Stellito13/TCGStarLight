@@ -96,7 +96,7 @@
 }
 
 .search-bar input::placeholder { color: var(--text-muted); }
-.search-bar input:focus { border-color: var(--gold); }
+.search-bar input:focus { border-color: var(--rare); box-shadow: 0 0 0 3px rgba(42,124,219,0.12); }
 
 .card-count {
     color: var(--text-muted);
@@ -223,7 +223,7 @@
 .lightbox-content img {
     width: 100%;
     border-radius: 14px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 60px rgba(201,168,76,0.1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.85), 0 0 60px rgba(42,124,219,0.15);
 }
 
 .lightbox-close {
@@ -349,7 +349,7 @@
 /* Ligne séparatrice gold → transparent */
 .set-rule {
     height: 1px;
-    background: linear-gradient(to right, var(--gold-dark), var(--border), transparent);
+    background: linear-gradient(to right, var(--rare), var(--border), transparent);
     margin-bottom: 20px;
     opacity: 0.6;
 }
