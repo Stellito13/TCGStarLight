@@ -9,7 +9,7 @@ const SETS = [
         label: "Set #1 · NCE – FR",
         year: "2026",
         total: 35,
-        status: "coming_soon" // "available" | "upcoming" | "coming_soon"
+        status: "available" // "available" | "upcoming" | "coming_soon"
     },
     // Exemple d'extension future — décommenter et remplir quand disponible :
     {
