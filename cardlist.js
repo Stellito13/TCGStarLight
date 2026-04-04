@@ -8,8 +8,8 @@ const SETS = [
         name: "New Collection Edition",
         label: "Set #1 · NCE – FR",
         year: "2026",
-        total: 35,
-        status: "available" // "available" | "upcoming" | "coming_soon"
+        total: 100,
+        status: "coming_soon" // "available" | "upcoming" | "coming_soon"
     },
     // Exemple d'extension future — décommenter et remplir quand disponible :
     {
@@ -17,6 +17,33 @@ const SETS = [
         name: "Pikmins Collection",
         label: "Set #2 · PC – FR",
         year: "2027",
+        total: 0,
+        status: "coming_soon" // "available" | "upcoming" | "coming_soon"
+    },
+
+    {
+        id: "MA",
+        name: "Secret Collection",
+        label: "Set #3 · MA – FR",
+        year: "2029",
+        total: 0,
+        status: "coming_soon" // "available" | "upcoming" | "coming_soon"
+    },
+
+    {
+        id: "HKS",
+        name: "Secret Collection",
+        label: "Set #4 · HKS – FR",
+        year: "2028",
+        total: 0,
+        status: "coming_soon" // "available" | "upcoming" | "coming_soon"
+    },
+
+        {
+        id: "TBOI",
+        name: "Secret Collection",
+        label: "Set #5 · TBOI – FR",
+        year: "2029",
         total: 0,
         status: "coming_soon" // "available" | "upcoming" | "coming_soon"
     },
