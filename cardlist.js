@@ -9,7 +9,7 @@ const SETS = [
         label: "Set #1 · NCE – FR",
         year: "2026",
         total: 100,
-        status: "available" // "" | "upcoming" | "coming_soon"
+        status: "coming_soon" // "available" | "upcoming" | ""
     },
     // Exemple d'extension future — décommenter et remplir quand disponible :
     {
@@ -472,11 +472,18 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0069", name: "Puppycat", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
+        id: "C 0069", name: "Puppycat", subtitle: "Gnagnagna", rarity: "C", hp: 30, set: "NCE",
         img: "./cards/Ccarte69.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
+    {
+        id: "R 0070", name: "Puppycat", subtitle: "Gnagnagna", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte70.png", attack: "Inconnu", attackDmg: 30, 
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+
 
 ];
 
