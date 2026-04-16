@@ -9,7 +9,6 @@ const SETS = [
         label: "Set #1 · NCE – FR",
         year: "2026",
         total: 100,
-        status: "coming_soon" // "available" | "upcoming" | ""
     },
     // Exemple d'extension future — décommenter et remplir quand disponible :
     {
@@ -229,6 +228,8 @@ const CARDS = [
     },
 
 
+
+
     {
         id: "C 0030", name: "Chouffe", subtitle: "Rouge", rarity: "C", hp: 20, set: "NCE",
         img: "./cards/Ccarte30.png", attack: "P'tite Bière", attackDmg: 20,
@@ -290,32 +291,32 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0040", name: "Curly", subtitle: "Donuts", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte40.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0040", name: "Curly", subtitle: "Donuts", rarity: "C", hp: 20, set: "NCE",
+        img: "./cards/Ccarte40.png", attack: "En vrai c'est trop bon", attackDmg: 20,
+        effect: "Redonne les HP perdu à la carte active",
         illustrator: "Stellito.rht"
     },
     {
         id: "R 0041", name: "Curly", subtitle: "Donuts", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte41.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        img: "./cards/Rcarte41.png", attack: "En vrai c'est trop bon", attackDmg: 30,
+        effect: "Redonne les HP perdu à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0042", name: "Curly", subtitle: "Cacahuètes", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte42.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0042", name: "Curly", subtitle: "Cacahuètes", rarity: "C", hp: 10, set: "NCE",
+        img: "./cards/Ccarte42.png", attack: "Tu manges ta fiancée ?!?", attackDmg: 10,
+        effect: "Redonne les HP perdu à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0043", name: "Curly", subtitle: "Cacahuètes", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte43.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0043", name: "Curly", subtitle: "Cacahuètes", rarity: "R", hp: 20, set: "NCE",
+        img: "./cards/Rcarte43.png", attack: "Tu manges ta fiancée ?!?", attackDmg: 20,
+        effect: "Redonne les HP perdu à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0044", name: "Fanta", subtitle: "Orange", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte44.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0044", name: "Fanta", subtitle: "Orange", rarity: "C", hp: 10, set: "NCE",
+        img: "./cards/Ccarte44.png", attack: "Inconnu", attackDmg: 10,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
@@ -339,6 +340,7 @@ const CARDS = [
     },
 
 
+
     {
         id: "C 0048", name: "Princesse", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
         img: "./cards/Ccarte48.png", attack: "Inconnu", attackDmg: 30,
@@ -358,131 +360,162 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0051", name: "Spike", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte49.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0051", name: "Spike", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte51.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
         id: "R 0052", name: "Spike", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte49.png", attack: "Inconnu", attackDmg: 30,
+        img: "./cards/Rcarte52.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0052", name: "Spike", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte52.png", attack: "Inconnu", attackDmg: 30,
+        id: "P 0053", name: "Spike", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte53.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0053", name: "Smash", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Ccarte53.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0054", name: "Smash", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte54.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0054", name: "Smash", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte54.png", attack: "Inconnu", attackDmg: 30,
+        id: "R 0055", name: "Smash", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte55.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0055", name: "Smash", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte55.png", attack: "Inconnu", attackDmg: 30,
+        id: "P 0056", name: "Smash", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte56.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
         {
-        id: "G 0056", name: "Smash", subtitle: "Nathan", rarity: "G", hp: 30, set: "NCE",
-        img: "./cards/Gcarte56.png", attack: "Inconnu", attackDmg: 30,
+        id: "G 0057", name: "Smash", subtitle: "Nathan", rarity: "G", hp: 30, set: "NCE",
+        img: "./cards/Gcarte57.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0057", name: "Famille", subtitle: "de cacahuètes", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte57.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0058", name: "Famille", subtitle: "de cacahuètes", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte58.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0058", name: "Famille", subtitle: "de cacahuètes", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte58.png", attack: "Inconnu", attackDmg: 30,
+        id: "R 0059", name: "Famille", subtitle: "de cacahuètes", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte59.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0059", name: "Famille", subtitle: "de cacahuètes", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte59.png", attack: "Inconnu", attackDmg: 30,
+        id: "P 0060", name: "Famille", subtitle: "de cacahuètes", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte60.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0060", name: "Maman", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte60.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0061", name: "Maman", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte61.png", attack: "Enceinte ???", attackDmg: 30,
+        effect: "Y’avait pas de vanne quand j’ai dis que j’allais te dessiner enceinte (attend les autres cartes)",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "R 0062", name: "Maman", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte62.png", attack: "Enceinte ???", attackDmg: 30,
+        effect: "Y’avait pas de vanne quand j’ai dis que j’allais te dessiner enceinte (attend les autres cartes)",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "P 0063", name: "Maman", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte63.png", attack: "Enceinte ???", attackDmg: 30,
+        effect: "Y’avait pas de vanne quand j’ai dis que j’allais te dessiner enceinte (attend les autres cartes)",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "C 0064", name: "Kermite", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte64.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0061", name: "Maman", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte61.png", attack: "Inconnu", attackDmg: 30,
+        id: "R 0065", name: "Kermite", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte65.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0062", name: "Maman", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte62.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
-        illustrator: "Stellito.rht"
-    },
-    {
-        id: "C 0063", name: "Kermite", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte63.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
-        illustrator: "Stellito.rht"
-    },
-    {
-        id: "R 0064", name: "Kermite", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte64.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
-        illustrator: "Stellito.rht"
-    },
-    {
-        id: "C 0065", name: "Sid", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte65.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
-        illustrator: "Stellito.rht"
-    },
-    {
-        id: "R 0066", name: "Sid", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte66.png", attack: "Inconnu", attackDmg: 30,
+        id: "P 0066", name: "Kermite", subtitle: "Autiste", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte66.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
         {
-        id: "C 0067", name: "Ectoplasma", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte67.png", attack: "Inconnu", attackDmg: 30,
+        id: "G 0067", name: "Kermite", subtitle: "Autiste", rarity: "G", hp: 30, set: "NCE",
+        img: "./cards/Gcarte67.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0068", name: "Ectoplasma", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte68.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0068", name: "Sid", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte68.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0069", name: "Puppycat", subtitle: "Gnagnagna", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte69.png", attack: "Inconnu", attackDmg: 30,
+        id: "R 0069", name: "Sid", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte69.png", attack: "Inconnu", attackDmg: 30,
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+        {
+        id: "P 0070", name: "Sid", subtitle: "Autiste", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte70.png", attack: "Inconnu", attackDmg: 30,
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+        {
+        id: "C 0071", name: "Ectoplasma", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte71.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0070", name: "Puppycat", subtitle: "Gnagnagna", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte70.png", attack: "Inconnu", attackDmg: 30, 
+        id: "R 0072", name: "Ectoplasma", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte72.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
+        {
+        id: "P 0073", name: "Ectoplasma", subtitle: "Autiste", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte73.png", attack: "Inconnu", attackDmg: 30,
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "C 0074", name: "Puppycat", subtitle: "Gnagnagna", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte74.png", attack: "Inconnu", attackDmg: 30,
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+    {
+        id: "R 0075", name: "Puppycat", subtitle: "Gnagnagna", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte75.png", attack: "Inconnu", attackDmg: 30, 
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+        {
+        id: "P 0076", name: "Puppycat", subtitle: "Gnagnagna", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte76.png", attack: "Inconnu", attackDmg: 30, 
+        effect: "Ajoute des HP à la carte active",
+        illustrator: "Stellito.rht"
+    },
+
 
 
 ];
