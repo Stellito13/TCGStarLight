@@ -379,27 +379,27 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0054", name: "Smash", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte54.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0054", name: "Smash", subtitle: "de fou", rarity: "C", hp: 30, set: "NCE",
+        img: "./cards/Ccarte54.png", attack: "Nudes", attackDmg: 30,
+        effect: "Montre ton cul",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0055", name: "Smash", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte55.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0055", name: "Smash", subtitle: "de fou", rarity: "R", hp: 30, set: "NCE",
+        img: "./cards/Rcarte55.png", attack: "Nudes", attackDmg: 30,
+        effect: "Montre ton cul",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0056", name: "Smash", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte56.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0056", name: "Smash", subtitle: "de fou", rarity: "P", hp: 30, set: "NCE",
+        img: "./cards/Pcarte56.png", attack: "Nudes", attackDmg: 30,
+        effect: "Montre ton cul",
         illustrator: "Stellito.rht"
     },
         {
-        id: "G 0057", name: "Smash", subtitle: "Nathan", rarity: "G", hp: 30, set: "NCE",
-        img: "./cards/Gcarte57.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "G 0057", name: "Smash", subtitle: "de fou", rarity: "G", hp: 30, set: "NCE",
+        img: "./cards/Gcarte57.png", attack: "Nudes", attackDmg: 30,
+        effect: "Montre ton cul",
         illustrator: "Stellito.rht"
     },
     {
