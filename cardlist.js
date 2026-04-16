@@ -462,57 +462,57 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0068", name: "Sid", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte68.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0068", name: "Sid", subtitle: "ou Nathan chepas", rarity: "C", hp: 40, set: "NCE",
+        img: "./cards/Ccarte68.png", attack: "Vrai fact", attackDmg: 20,
+        effect: "Life without Girlfriend",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0069", name: "Sid", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte69.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0069", name: "Sid", subtitle: "ou Nathan chepas", rarity: "R", hp: 40, set: "NCE",
+        img: "./cards/Rcarte69.png", attack: "Vrai fact", attackDmg: 20,
+        effect: "Life with Girlfriend",
         illustrator: "Stellito.rht"
     },
         {
-        id: "P 0070", name: "Sid", subtitle: "Autiste", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte70.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0070", name: "Sid", subtitle: "ou Nathan chepas", rarity: "P", hp: 40, set: "NCE",
+        img: "./cards/Pcarte70.png", attack: "Vrai fact", attackDmg: 20,
+        effect: "life with Wife",
         illustrator: "Stellito.rht"
     },
         {
-        id: "C 0071", name: "Ectoplasma", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte71.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0071", name: "Ectoplasma", subtitle: "Dessin", rarity: "C", hp: 40, set: "NCE",
+        img: "./cards/Ccarte71.png", attack: "Gribouiboui", attackDmg: 20,
+        effect: "Gnagnagna tu fais des dessins enfantin Oui et m’en fou",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0072", name: "Ectoplasma", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte72.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0072", name: "Ectoplasma", subtitle: "Dessin", rarity: "R", hp: 40, set: "NCE",
+        img: "./cards/Rcarte72.png", attack: "Gribouiboui", attackDmg: 20,
+        effect: "Gnagnagna tu fais des dessins enfantin Oui et m’en fou",
         illustrator: "Stellito.rht"
     },
         {
-        id: "P 0073", name: "Ectoplasma", subtitle: "Autiste", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte73.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0073", name: "Ectoplasma", subtitle: "Dessin", rarity: "P", hp: 40, set: "NCE",
+        img: "./cards/Pcarte73.png", attack: "Gribouiboui", attackDmg: 20,
+        effect: "Gnagnagna tu fais des dessins enfantin Oui et m’en fou",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0074", name: "Puppycat", subtitle: "Gnagnagna", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte74.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0074", name: "Puppycat", subtitle: "Gnagnagna", rarity: "C", hp: 60, set: "NCE",
+        img: "./cards/Ccarte74.png", attack: "Je dessine trop bien", attackDmg: 40,
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0075", name: "Puppycat", subtitle: "Gnagnagna", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte75.png", attack: "Inconnu", attackDmg: 30, 
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0075", name: "Puppycat", subtitle: "Gnagnagna", rarity: "R", hp: 60, set: "NCE",
+        img: "./cards/Rcarte75.png", attack: "Je dessine trop bien", attackDmg: 40, 
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
         illustrator: "Stellito.rht"
     },
         {
-        id: "P 0076", name: "Puppycat", subtitle: "Gnagnagna", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte76.png", attack: "Inconnu", attackDmg: 30, 
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0076", name: "Puppycat", subtitle: "Gnagnagna", rarity: "P", hp: 60, set: "NCE",
+        img: "./cards/Pcarte76.png", attack: "Je dessine trop bien", attackDmg: 40, 
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
         illustrator: "Stellito.rht"
     },
 
