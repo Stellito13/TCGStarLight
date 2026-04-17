@@ -516,6 +516,26 @@ const CARDS = [
         effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
         illustrator: "Stellito.rht"
     },
+        {
+        id: "C 0077", name: "Bob", subtitle: "Svaroski", rarity: "C", hp: 60, set: "NCE",
+        img: "./cards/Ccarte77.png", attack: "Je dessine trop bien", attackDmg: 40, 
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht"
+    },
+            {
+        id: "R 0078", name: "Bob", subtitle: "Svaroski", rarity: "R", hp: 60, set: "NCE",
+        img: "./cards/Rcarte78.png", attack: "Je dessine trop bien", attackDmg: 40, 
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht"
+    },
+
+            {
+        id: "P 0079", name: "Bob", subtitle: "Svaroski", rarity: "P", hp: 60, set: "NCE",
+        img: "./cards/Pcarte79.png", attack: "Je dessine trop bien", attackDmg: 40, 
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht"
+    },
+
 
 
 
