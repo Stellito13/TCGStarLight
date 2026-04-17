@@ -343,21 +343,21 @@ const CARDS = [
 
 
     {
-        id: "C 0048", name: "Princesse", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte48.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0048", name: "Princesse", subtitle: "Nathan", rarity: "C", hp: 60, set: "NCE",
+        img: "./cards/Ccarte48.png", attack: "Magnifique robe", attackDmg: 20,
+        effect: "Oui un jour tu vas porter une magnifique robe et tu auras pas le choix et j’aurais une photo",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0049", name: "Princesse", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte49.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0049", name: "Princesse", subtitle: "Nathan", rarity: "R", hp: 60, set: "NCE",
+        img: "./cards/Rcarte49.png", attack: "Magnifique robe", attackDmg: 20,
+        effect: "Oui un jour tu vas porter une magnifique robe et tu auras pas le choix et j’aurais une photo",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0050", name: "Princesse", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte50.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0050", name: "Princesse", subtitle: "Nathan", rarity: "P", hp: 60, set: "NCE",
+        img: "./cards/Pcarte50.png", attack: "Magnifique robe", attackDmg: 20,
+        effect: "Oui un jour tu vas porter une magnifique robe et tu auras pas le choix et j’aurais une photo",
         illustrator: "Stellito.rht"
     },
     {
