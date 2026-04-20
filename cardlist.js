@@ -9,7 +9,7 @@ const SETS = [
         label: "Set #1 · NCE – FR",
         year: "2026",
         total: 100,
-        status: "available" // "" | "upcoming" | "coming_soon"
+        status: "coming_soon" // "available" | "upcoming" | ""
     },
     // Exemple d'extension future — décommenter et remplir quand disponible :
     {
@@ -361,21 +361,21 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0051", name: "Spike", subtitle: "Nathan", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte51.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0051", name: "Spike", subtitle: "MLP", rarity: "C", hp: 20, set: "NCE",
+        img: "./cards/Ccarte51.png", attack: "Spyki Spike", attackDmg: 30,
+        effect: "Oui",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0052", name: "Spike", subtitle: "Nathan", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte52.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0052", name: "Spike", subtitle: "MLP", rarity: "R", hp: 20, set: "NCE",
+        img: "./cards/Rcarte52.png", attack: "Spyki Spike", attackDmg: 30,
+        effect: "Oui ...",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0053", name: "Spike", subtitle: "Nathan", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte53.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0053", name: "Spike", subtitle: "MLP", rarity: "P", hp: 20, set: "NCE",
+        img: "./cards/Pcarte53.png", attack: "Spyki Spike", attackDmg: 30,
+        effect: "Oui ?",
         illustrator: "Stellito.rht"
     },
     {
@@ -403,19 +403,19 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0058", name: "Famille", subtitle: "de cacahuètes", rarity: "C", hp: 30, set: "NCE",
+        id: "C 0058", name: "Cacahuètes", subtitle: "et sa famille", rarity: "C", hp: 30, set: "NCE",
         img: "./cards/Ccarte58.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0059", name: "Famille", subtitle: "de cacahuètes", rarity: "R", hp: 30, set: "NCE",
+        id: "R 0059", name: "Cacahuètes", subtitle: "et sa famille", rarity: "R", hp: 30, set: "NCE",
         img: "./cards/Rcarte59.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0060", name: "Famille", subtitle: "de cacahuètes", rarity: "P", hp: 30, set: "NCE",
+        id: "P 0060", name: "Cacahuètes", subtitle: "et sa famille", rarity: "P", hp: 30, set: "NCE",
         img: "./cards/Pcarte60.png", attack: "Inconnu", attackDmg: 30,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
@@ -439,27 +439,27 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0064", name: "Kermite", subtitle: "Autiste", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte64.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "C 0064", name: "Kermite", subtitle: "Story", rarity: "C", hp: 50, set: "NCE",
+        img: "./cards/Ccarte64.png", attack: "Ride Wife", attackDmg: 20,
+        effect: "Life good",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0065", name: "Kermite", subtitle: "Autiste", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte65.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "R 0065", name: "Kermite", subtitle: "Story", rarity: "R", hp: 50, set: "NCE",
+        img: "./cards/Rcarte65.png", attack: "Wife fight back", attackDmg: 20,
+        effect: "Kill wife",
         illustrator: "Stellito.rht"
     },
     {
-        id: "P 0066", name: "Kermite", subtitle: "Autiste", rarity: "P", hp: 30, set: "NCE",
-        img: "./cards/Pcarte66.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "P 0066", name: "Kermite", subtitle: "Story", rarity: "P", hp: 50, set: "NCE",
+        img: "./cards/Pcarte66.png", attack: "Wife gone", attackDmg: 20,
+        effect: "Think about",
         illustrator: "Stellito.rht"
     },
         {
-        id: "G 0067", name: "Kermite", subtitle: "Autiste", rarity: "G", hp: 30, set: "NCE",
-        img: "./cards/Gcarte67.png", attack: "Inconnu", attackDmg: 30,
-        effect: "Ajoute des HP à la carte active",
+        id: "G 0067", name: "Kermite", subtitle: "Story", rarity: "G", hp: 50, set: "NCE",
+        img: "./cards/Gcarte67.png", attack: "Wife", attackDmg: 20,
+        effect: "Regret",
         illustrator: "Stellito.rht"
     },
     {
