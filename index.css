@@ -19,10 +19,14 @@
     --text-muted: #54516e;
 
     /* Couleurs rareté — directement extraites des cartes */
-    --gold:       #e6b800;
+    --gold:       #ebc448;
     --gold-light: #ffd740;
     --gold-dark:  #a07c00;
-    --gold-glow:  rgba(230,184,0,0.18);
+    --gold-glow:  rgba(235,196,72,0.18);
+
+    --secret:     #bf327a;
+    --secret-light: #e05a9a;
+    --secret-glow:  rgba(191,50,122,0.18);
 
     --rare:       #2a7cdb;       /* bleu carte R */
     --rare-light: #5aa3ff;

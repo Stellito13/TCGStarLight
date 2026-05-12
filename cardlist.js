@@ -8,7 +8,7 @@ const SETS = [
         name: "New Collection Edition",
         label: "Set #1 · NCE – FR",
         year: "2026",
-        total: 100,
+        total: 78,
         status: "coming_soon" // "available" | "upcoming" | ""
     },
     // Exemple d'extension future — décommenter et remplir quand disponible :
@@ -316,26 +316,26 @@ const CARDS = [
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0044", name: "Fanta", subtitle: "Orange", rarity: "C", hp: 10, set: "NCE",
-        img: "./cards/Ccarte44.png", attack: "Inconnu", attackDmg: 10,
+        id: "C 0044", name: "Bob", subtitle: "Svaroski", rarity: "C", hp: 40, set: "NCE",
+        img: "./cards/Ccarte44.png", attack: "Inconnu", attackDmg: 9999999999,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0045", name: "Fanta", subtitle: "Orange", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte45.png", attack: "Inconnu", attackDmg: 30,
+        id: "R 0045", name: "Bob", subtitle: "Svaroski", rarity: "R", hp: 40, set: "NCE",
+        img: "./cards/Rcarte45.png", attack: "Inconnu", attackDmg: 9999999999,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "C 0046", name: "Limonade", subtitle: "Duck", rarity: "C", hp: 30, set: "NCE",
-        img: "./cards/Ccarte46.png", attack: "Inconnu", attackDmg: 30,
+        id: "C 0046", name: "Shin", subtitle: "Godzilla", rarity: "C", hp: 60, set: "NCE",
+        img: "./cards/Ccarte46.png", attack: "Inconnu", attackDmg: 20,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
     {
-        id: "R 0047", name: "Limonade", subtitle: "Duck", rarity: "R", hp: 30, set: "NCE",
-        img: "./cards/Rcarte47.png", attack: "Inconnu", attackDmg: 30,
+        id: "R 0047", name: "Shin", subtitle: "Godzilla", rarity: "R", hp: 60, set: "NCE",
+        img: "./cards/Rcarte47.png", attack: "Inconnu", attackDmg: 20,
         effect: "Ajoute des HP à la carte active",
         illustrator: "Stellito.rht"
     },
@@ -516,24 +516,43 @@ const CARDS = [
         effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
         illustrator: "Stellito.rht"
     },
-        {
-        id: "C 0077", name: "Bob", subtitle: "Svaroski", rarity: "C", hp: 60, set: "NCE",
-        img: "./cards/Ccarte77.png", attack: "Je dessine trop bien", attackDmg: 40, 
-        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
-        illustrator: "Stellito.rht"
-    },
-            {
-        id: "R 0078", name: "Bob", subtitle: "Svaroski", rarity: "R", hp: 60, set: "NCE",
-        img: "./cards/Rcarte78.png", attack: "Je dessine trop bien", attackDmg: 40, 
-        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
-        illustrator: "Stellito.rht"
-    },
 
-            {
-        id: "P 0079", name: "Bob", subtitle: "Svaroski", rarity: "P", hp: 60, set: "NCE",
-        img: "./cards/Pcarte79.png", attack: "Je dessine trop bien", attackDmg: 40, 
+
+
+        {
+        id: "D 0001", name: "Nathan", subtitle: "Original", rarity: "S", hp: 60, set: "NCE",
+        img: "./cards/Dcarte1.png", attack: "Je dessine trop bien", attackDmg: 40,
         effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
-        illustrator: "Stellito.rht"
+        illustrator: "Stellito.rht",
+        unlockKey: "Montre ton cul"  // ← Changer cette clé librement
+    },
+    {
+        id: "D 0002", name: "Poser", subtitle: "en festival", rarity: "S", hp: 60, set: "NCE",
+        img: "./cards/Dcarte2.png", attack: "Je dessine trop bien", attackDmg: 40,
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht",
+        unlockKey: "Loooser"  // ← Changer cette clé librement
+    },
+    {
+        id: "D 0003", name: "Smash", subtitle: "Nathan", rarity: "S", hp: 60, set: "NCE",
+        img: "./cards/Dcarte3.png", attack: "Je dessine trop bien", attackDmg: 40,
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht",
+        unlockKey: "Miam"  // ← Changer cette clé librement
+    },
+    {
+        id: "A 00077", name: "Pikmin", subtitle: "Rouge", rarity: "S", hp: 60, set: "NCE",
+        img: "./cards/Acarte77.png", attack: "Je dessine trop bien", attackDmg: 40,
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht",
+        unlockKey: "Smash"  // ← Changer cette clé librement
+    },
+    {
+        id: "A 00078", name: "Pikmin", subtitle: "Bleu", rarity: "S", hp: 60, set: "NCE",
+        img: "./cards/Acarte78.png", attack: "Je dessine trop bien", attackDmg: 40,
+        effect: "Comment ça je commence à faire des cartes juste pour dessiner des trucs random (C fo)(Mentisseur)",
+        illustrator: "Stellito.rht",
+        unlockKey: "Bouuuuuh"  // ← Changer cette clé librement
     },
 
 
@@ -553,6 +572,57 @@ const lightboxImg = document.getElementById("lightboxImg");
 
 let currentFilter = "all";
 let currentSearch = "";
+const unlockedSecrets = new Set();
+
+// =========================
+// SECRET UNLOCK MODAL
+// =========================
+let pendingUnlockId = null;
+
+function openUnlockModal(cardId) {
+    pendingUnlockId = cardId;
+    document.getElementById("unlockInput").value = "";
+    document.getElementById("unlockError").style.display = "none";
+    document.getElementById("unlockModal").classList.add("open");
+    setTimeout(() => document.getElementById("unlockInput").focus(), 80);
+}
+
+function closeUnlockModal() {
+    pendingUnlockId = null;
+    document.getElementById("unlockModal").classList.remove("open");
+}
+
+function tryUnlock() {
+    if (!pendingUnlockId) return;
+    const card = CARDS.find(c => c.id === pendingUnlockId);
+    const input = document.getElementById("unlockInput").value.trim();
+    const errorEl = document.getElementById("unlockError");
+
+    if (!card || !card.unlockKey) { closeUnlockModal(); return; }
+
+    if (input === card.unlockKey) {
+        closeUnlockModal();
+        // Trigger flip on the locked card currently in the DOM
+        const flipInner = document.getElementById(`flip-${pendingUnlockId?.replace(/\s/g,'-') ?? card.id.replace(/\s/g,'-')}`);
+        // pendingUnlockId was cleared — use card.id
+        const safeId = card.id;
+        const flipEl = document.getElementById(`flip-${safeId.replace(/\s/g,'-')}`);
+        if (flipEl) flipEl.classList.add("flipped");
+        setTimeout(() => {
+            unlockedSecrets.add(safeId);
+            renderCards();
+            const el = grid.querySelector(`[data-id="${safeId}"]`);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 750);
+    } else {
+        errorEl.style.display = "block";
+        document.getElementById("unlockInput").value = "";
+        document.getElementById("unlockInput").focus();
+        // Shake animation
+        document.getElementById("unlockInput").classList.add("shake");
+        setTimeout(() => document.getElementById("unlockInput").classList.remove("shake"), 500);
+    }
+}
 
 // =========================
 // RENDER — par set
@@ -561,6 +631,8 @@ function renderCards() {
     const q = currentSearch.toLowerCase();
 
     const filtered = CARDS.filter(card => {
+        // Secret cards never show in "all" — only in their dedicated filter
+        if (currentFilter === "all" && card.rarity === "S") return false;
         const matchRarity = currentFilter === "all" || card.rarity === currentFilter;
         const matchSearch = !q
             || card.name.toLowerCase().includes(q)
@@ -605,10 +677,21 @@ function renderCards() {
 
     grid.innerHTML = html;
 
-    // Listeners lightbox
+    // Unlock listeners — ouvre la modale de clé
+    grid.querySelectorAll(".card-locked-overlay").forEach(overlay => {
+        overlay.addEventListener("click", (e) => {
+            e.stopPropagation();
+            openUnlockModal(overlay.dataset.unlock);
+        });
+    });
+
+    // Lightbox listeners — normal cards only (not locked secret overlays)
     grid.querySelectorAll(".card-item").forEach(el => {
         el.addEventListener("click", () => {
-            const found = CARDS.find(c => c.id === el.dataset.id);
+            const cardId = el.dataset.id;
+            // Only open lightbox if not a locked secret
+            if (el.querySelector(".card-locked-overlay")) return;
+            const found = CARDS.find(c => c.id === cardId);
             if (found) openLightbox(found);
         });
     });
@@ -617,7 +700,7 @@ function renderCards() {
 function buildSetHeader(setDef, count) {
     const statusBadge = {
         available: `<span class="set-status available">Disponible</span>`,
-        upcoming: `<span class="set-status upcoming">Précommande · 23 Août 2026</span>`,
+        upcoming: `<span class="set-status upcoming">Précommande · 13 Mai 2026</span>`,
         coming_soon: `<span class="set-status coming-soon">À venir</span>`,
     }[setDef.status] || "";
 
@@ -637,8 +720,36 @@ function buildSetHeader(setDef, count) {
 }
 
 function buildCardHTML(card) {
+    if (card.rarity === "S" && !unlockedSecrets.has(card.id)) {
+        // Locked secret card — show back face with locked overlay
+        return `
+            <div class="card-item" data-id="${card.id}" data-rarity="S">
+                <div class="card-flip-wrapper">
+                    <div class="card-flip-inner" id="flip-${card.id.replace(/\s/g,'-')}">
+                        <div class="card-face" style="position:relative">
+                            <img src="./cards/Arriere2.png" alt="Carte secrète" loading="lazy" />
+                            <div class="card-locked-overlay" data-unlock="${card.id}">
+                                <span class="lock-hint">Carte Secrète</span>
+                            </div>
+                        </div>
+                        <div class="card-face card-face-back">
+                            <img src="${card.img}" alt="${card.name} ${card.id}" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="card-name">??? <small class="card-subtitle">Secret</small></span>
+                    <div class="card-id">
+                        <span class="rarity-badge badge-S">S</span>
+                        ??? 
+                        <span class="hp-pill">HP ???</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
     return `
-        <div class="card-item" data-id="${card.id}" title="${card.name} – ${card.id}">
+        <div class="card-item${card.rarity === "S" ? " secret-unlocked" : ""}" data-id="${card.id}" data-rarity="${card.rarity}" title="${card.name} – ${card.id}">
             <img src="${card.img}" alt="${card.name} ${card.id}" loading="lazy" />
             <div class="card-meta">
                 <span class="card-name">${card.name} <small class="card-subtitle">${card.subtitle}</small></span>
@@ -697,7 +808,13 @@ function closeLightbox() {
 
 document.getElementById("lightboxBg").addEventListener("click", closeLightbox);
 document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeLightbox(); closeUnlockModal(); } });
+
+// Unlock modal buttons
+document.getElementById("unlockConfirmBtn").addEventListener("click", tryUnlock);
+document.getElementById("unlockCancelBtn").addEventListener("click", closeUnlockModal);
+document.getElementById("unlockModalBg").addEventListener("click", closeUnlockModal);
+document.getElementById("unlockInput").addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
 
 // =========================
 // INIT

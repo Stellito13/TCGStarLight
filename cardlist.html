@@ -60,12 +60,13 @@
 		<button class="filter-btn rarity-R" data-filter="R">R – Rare</button>
 		<button class="filter-btn rarity-P" data-filter="P">P – Parallèle</button>
 		<button class="filter-btn rarity-G" data-filter="G">G – Gold</button>
+		<button class="filter-btn rarity-S" data-filter="S">S – Secret</button>
 	</div>
 
 	<!-- SEARCH -->
 	<div class="search-bar">
 		<input type="text" id="searchInput" placeholder="Rechercher une carte…" />
-		<span class="card-count" id="cardCount">35 cartes</span>
+		<span class="card-count" id="cardCount">78 cartes</span>
 	</div>
 
 	<hr class="section-sep">
@@ -73,6 +74,28 @@
 	<!-- GRID -->
 	<div class="cards-grid" id="cardsGrid">
 		<!-- Cards injected by JS -->
+	</div>
+
+	<!-- UNLOCK MODAL -->
+	<div class="unlock-modal" id="unlockModal">
+		<div class="unlock-modal-bg" id="unlockModalBg"></div>
+		<div class="unlock-modal-box">
+			<h3 class="unlock-modal-title">Carte Secrète</h3>
+			<p class="unlock-modal-sub">Entrez le code de déverrouillage pour révéler cette carte.</p>
+			<input
+				type="text"
+				id="unlockInput"
+				class="unlock-input"
+				placeholder="Code secret…"
+				autocomplete="off"
+				spellcheck="false"
+			/>
+			<p class="unlock-error" id="unlockError">Code incorrect. Réessayez.</p>
+			<div class="unlock-modal-actions">
+				<button class="unlock-btn-cancel" id="unlockCancelBtn">Annuler</button>
+				<button class="unlock-btn-confirm" id="unlockConfirmBtn">Déverrouiller</button>
+			</div>
+		</div>
 	</div>
 
 	<!-- LIGHTBOX -->
